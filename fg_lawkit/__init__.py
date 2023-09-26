@@ -221,8 +221,7 @@ def login():
             token = token_hex(16)  # Generate a 32-character random token
             db.users.update_one({'_id': user.user_id}, {'$set': {'token': token}})
             login_user(user)
-            user_ip = request.remote_addr
-            update_ip(user_ip,form.email.data,db)            
+                    
             if user_data['role'] == 'admin':
                 # return "yes"
                 return redirect(url_for("Admin_dashboard.analytics"))####--- this would be change
