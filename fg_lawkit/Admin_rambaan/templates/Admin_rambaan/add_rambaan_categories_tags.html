@@ -1,0 +1,62 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+  
+ <h1>Change Image:</h1>
+    <form method="POST" >
+        {{ form.csrf_token }}
+        {% for subfield in form.options %}
+        <div>
+            <input type="radio" name="{{ subfield.name }}" value="{{ subfield.data }}">{{ subfield.label }}
+        </div>
+        {% endfor %}
+        {{ form.tags.label }} {{ form.tags }}
+        {{ form.tags_code.label }} {{ form.tags_code }}
+        {{ form.submit() }}
+        {% for error in form.tags_code.errors %}
+        <br>
+        <span>{{ error }}</span>
+    {% endfor %}
+
+    </form>
+
+
+    
+    
+<h2>Visible Tag</h2>
+<table border =1>
+  <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th>Delete</th>
+
+  </tr>
+  {% for key, value in rambaan_categories_tags_vs.items() %}
+  <tr>
+      <td>{{ key }}</td>
+      <td>{{ value }}</td>
+      <td><a href="{{ url_for('Admin_rambaan.del_rambaan_categories_tags',value=key,value2='vs') }}">Delete</a></td>
+
+
+  </tr>
+  {% endfor %}
+</table>
+
+<h2>Hiddne Tags</h2>
+<table border =1>
+  <tr>
+      <th>Key</th>
+      <th>Value</th>
+      <th>Delete</th>
+
+  </tr>
+  {% for key, value in rambaan_categories_tags_h.items() %}
+  <tr>
+      <td>{{ key }}</td>
+      <td>{{ value }}</td>
+      <td><a href="{{ url_for('Admin_rambaan.del_rambaan_categories_tags',value=key,value2='hi') }}">Delete</a></td>
+
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

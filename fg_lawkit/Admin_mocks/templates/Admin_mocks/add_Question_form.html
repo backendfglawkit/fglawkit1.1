@@ -1,0 +1,18 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+    {{y}}
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        {{ form.subject_name.label }} {{ form.subject_name }}<br><br>
+        {{ form.subject_code.label }} {{ form.subject_code }}<br><br>
+        {{ form.paper_code.label }} {{ form.paper_code }}<br><br>
+        {{ form.paper_name.label }} {{ form.paper_name }}<br><br>
+        {{ form.paper_time_duration.label }} {{ form.paper_time_duration }}<br><br>
+    
+        {% for nested in form.Question %}
+            {{ nested.label }}{{ nested }}
+        {% endfor %}
+        <button>Submit</button>
+        {{x}}
+    </form>
+{% endblock %}

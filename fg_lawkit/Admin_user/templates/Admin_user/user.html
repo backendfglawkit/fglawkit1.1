@@ -1,0 +1,102 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+<h1>user</h1>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Mock Purchased</th>
+            <th>Mock Expired</th>
+            <th>Rambaan</th>
+            <th>Notifications</th>
+            <th>Publications</th>
+            <th>IP Address</th>
+            <th>give rambaan for 335 days</th>
+            <th>blacklist</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in user %}
+
+
+        <tr>
+
+            <td>{{ data['email'] }}</td>
+
+            <td>{{ data['name'] }}</td>
+            <td>{{ data['role'] }}</td>
+            <td>{{ data['mock_purchased'] }}</td>
+            <td>{{ data['mock_expired'] }}</td>
+
+            <td>{{ data['rambaan'] }}</td>
+
+            <td>{{ data['notifications'] }}</td>
+            <td>{{ data['publications'] }}</td>
+            <td>{{ data['ip_address'] }}</td>
+            {% if data['role']!='admin' %}
+                {% if data['rambaan']['status'] %}
+                    <td><button><a href="">Already have</a></td></button>
+                {% else %}
+                    <td><button><a href="rambaan_access/{{data['email']}}">access to rambaan for 335 days</a></td></button>
+                {% endif %}
+            <td><button><a href="block_unblock/{{data['email']}}/block">block</a></td></button>
+            {% else %}
+            <td><button><a href=""><strike>not for admin</strike></a></td></button>
+            <td><button><a href=""><strike>not for admin</strike></a></td></button>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+<h1>terminated user</h1>
+
+<table border=1>
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Mock Purchased</th>
+            <th>Mock Expired</th>
+            <th>Rambaan</th>
+            <th>Notifications</th>
+            <th>Publications</th>
+            <th>IP Address</th>
+            <th>give rambaan for 335 days</th>
+            <th>blacklist</th>
+            <th>perma delete</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in terminated_user %}
+        <tr>
+
+            <td>{{ data['email'] }}</td>
+
+            <td>{{ data['name'] }}</td>
+            <td>{{ data['role'] }}</td>
+            <td>{{ data['mock_purchased'] }}</td>
+            <td>{{ data['mock_expired'] }}</td>
+            <td>{{ data['rambaan'] }}</td>
+            <td>{{ data['notifications'] }}</td>
+            <td>{{ data['publications'] }}</td>
+            <td>{{ data['ip_address'] }}</td>
+            <td><button><a href="rambaan_access/{{data['email']}}">access to rambaan for 335 days</a></td></button>
+            <td><button><a href="block_unblock/{{data['email']}}/unblock">unblock</a></td></button>
+            <td><button><a href="block_unblock/{{data['email']}}/delete">prama delete</a></td></button>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+        {% endblock %}

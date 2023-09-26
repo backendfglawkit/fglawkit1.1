@@ -1,0 +1,45 @@
+{% extends "dashboard.html" %}
+{% block content %}
+
+<h3 class="text-dark mb-4">Topic - {{UPCD['subject_name']}}</h3>
+
+
+
+<div class="card shadow">
+  <div class="card-body">
+      <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+          <table class="table my-0" id="dataTable">
+              <thead>
+                  <tr>
+                      <th >Name</th>
+                      <th class="text-center">Question</th>
+                      <th class="text-center">Apply</th>
+                  </tr>
+              </thead>
+              <tbody>
+
+                {% for items in MCTMT %}
+                  <tr>
+                      <td class="text-start">{{m_name[items]}}</td>
+                      <td class="text-center">{{number_of_question[items]}}</td>  
+                      <td class="text-center"><a href="{{ url_for('Student_mocks.confirm_start',value=valuei,value2=items) }}"><button class="btn  btn-outline-primary" type="button">Start Now</button></a></td>
+                  </tr>
+                  {% endfor %}
+               
+                  {% for items in asd %}
+                  <tr class ="justify-content-center">
+                      <td class="text-start">{{m_name[items]}}</td>
+                      <td class="text-center">{{number_of_question[items]}}</td>  
+                      <td class="text-center"><a href="#"><button class="btn btn-dark"  disabled type="button">Out of Attempts</button></a></td>
+                  </tr>
+                  {% endfor %}
+                  
+              </tbody>
+              
+          </table>
+      </div>
+  </div>
+</div>
+
+
+{% endblock %}

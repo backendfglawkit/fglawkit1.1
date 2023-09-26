@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br><br>
+
+{% if data != "false" %}
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Text on one side -->
+        <div class="col-lg-6 col-12 hero-text ">
+            <h1 class="mb-4"><b>{{ data.course }}</b></h1>
+            <p>{{ data.long_dic }}</p>
+            {#<button class="btn mt-3 hero-getstarted">Register</button>
+            <button class="btn mt-3 hero-getstarted1">Learn More</button>#}
+            <hr>
+            <h5><b> Duration - {{data['validate']}} Days</b></h5>
+        </div>
+        <!-- Card on the other side -->
+        <div class="col-lg-6 col-12 hero-card px-auto bg-white">
+            <div class="card mx-auto" style="width: 70%;">
+                <div class="ratio ratio-16x9">
+                  <iframe src="{{data['video_link']}}"></iframe>
+                </div>
+                <div class="card-body">
+                  <div>
+                    <h2>{{ data.course }}</h2>
+                    <hr>
+                    <p class="card-text">he card's content.Some quick example text to build on the card's content.Some quick example text to build on the card's content.Some quick example text to build on the card's content.</p>
+                  </div>
+                  <div >
+                    <ul class="hero-list">
+                      {% for k in data['feature'] %}
+                      <li><i class="bi bi-award"></i>{{k}}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer" style="background: #00B2FF;">
+                  <a href="{{ url_for('Student_course.buy_course',value=data['course_code']) }}">
+                    <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Rs.{{ data.price }}</h4>
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+  <div class ="row">
+    <div class="col">
+  <h2 class="text-center fw-bold mb-0 ">Content</h2>
+  <p class="mx-auto text-left"
+    style="height: 2.3px; width: 35vw; max-width: 90px; background-color: black; transform: translateX(0%);"></p>
+    </div>
+  </div>
+  <br>
+
+
+
+
+        <div class="row justify-content-left"> <!-- Center the column within the row -->
+            <div class="col-md-6 mx-auto mb-5"> <!-- Center the column within its container -->
+                <ul class="list-group">
+                    <!-- List Header -->
+                    {% for section, items in data.content.items() %}
+                    <li class="list-group-item list-group-item-secondary "><b>{{ section }}</b></li>
+    
+                    <!-- List Items -->
+                    {% for item in items %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        {{ item.title }}
+                        {% if  item.type == "video" %}
+                         <span class="bi bi-camera-video-fill text-muted"></span>
+                         {% else %}
+                         <span class="bi bi-file-earmark-fill text-muted"></span>
+                         {% endif %}
+                    </li>
+                    {% endfor %}
+                {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+  </div>
+
+
+
+
+    
+    {% endif %}
+
+
+{% endblock %}

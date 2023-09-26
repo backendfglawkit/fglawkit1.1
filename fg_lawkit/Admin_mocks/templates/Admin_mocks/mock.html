@@ -1,0 +1,90 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<table border="1">
+  <tr>
+        <td>  <a href="{{ url_for('Admin_mocks.add_mock_home') }}">
+              <button>Add Home Details</button></td>
+          </a>
+          <td>
+          <a href="{{ url_for('Admin_mocks.add') }}">
+              <button>Add Mocks</button>
+          </a>
+      </td>
+  </tr>
+</table>
+
+<h2>Question Paper</h2>
+<table border="1">
+  <tr>
+    <th>Subject code</th>
+    <th>Subject Name</th>
+
+    <th>paper_inside</th>
+    <th>view paper </th>
+    <th>delete</th>
+    <th>poke</th>
+
+
+  </tr>
+  {% for i in d %}
+    <tr>
+      <td>{{ i }}</td>
+      <td>{{d[i]['subject_name']}}</td>
+     
+      <td>{{d[i]['no_of_paper']}}</td>
+      <td><a href="sub/{{ i }}"><button>View</button></a></td>
+      <td><a href="sub/change/{{ i }}/del"> <button>Delete</button></a></td>
+      <td><a href="sub/change/{{ i }}/poke"><button>poke</button></a></td>
+
+      
+     
+    </tr>
+  {% endfor %}
+</table>
+
+<h2>home page data</h2>
+<table border="1">
+  <tr>
+    <th>Subject Name</th>
+    <th>subject_code</th>
+    <th>title</th>
+    <th>Sub_title</th>
+    <th>Discription</th>
+    <th>number of Paper</th>
+    <th>number of Question</th>
+    <th>price</th>
+    <th>discount</th>
+    <th>Suggested Course</th>
+    <th>FAQ</th>
+    <th>Feature</th>
+    <th>mock_code</th>
+    <th>image</th>
+    <th>Video </th>
+
+    <th>delete</th>
+    
+  </tr>
+  {% for item in h %}
+    <tr>
+      <td>{{ item['subject_name'] }}     ---<a href='home_pg_indi_value/{{item["subject_code"]}}/subject_name '>        <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['subject_code'] }}                                                                                                                    </td>
+      <td>{{ item['title'] }}            ---<a href='home_pg_indi_value/{{item["subject_code"]}}/title'>                <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['sub_title'] }}        ---<a href='home_pg_indi_value/{{item["subject_code"]}}/sub_title'>            <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['dic'] }}              ---<a href='home_pg_indi_value/{{item["subject_code"]}}/dic'>                  <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['no_of_paper'] }}      ---<a href='home_pg_indi_value/{{item["subject_code"]}}/no_of_paper'>          <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['no_of_question'] }}   ---<a href='home_pg_indi_value/{{item["subject_code"]}}/no_of_question'>       <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['price'] }}            ---<a href='home_pg_indi_value/{{item["subject_code"]}}/price'>                <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['discount'] }}         ---<a href='home_pg_indi_value/{{item["subject_code"]}}/discount'>             <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['suggested_course'] }} ---<a href='home_pg_indi_value/{{item["subject_code"]}}/suggested_course'>     <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['faq'] }}              ----<a href='home_pg_indi_value/{{item["subject_code"]}}/faq'>                 <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['feature'] }}          ---<a href='home_pg_indi_value/{{item["subject_code"]}}/feature'>              <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['paper_code'] }}       ---<a href='home_pg_indi_value/{{item["subject_code"]}}/paper_code'>           <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['image'] }}       ---<a href='#'>           <BUTTON>change</BUTTON></a>     </td>
+      <td>{{ item['video'] }}       ---<a href='#'>           <BUTTON>change</BUTTON></a>     </td>
+      
+      <td><a href="del_mock_home/{{item['subject_name']}}"> <button>delete</button></td>
+    </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

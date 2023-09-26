@@ -1,0 +1,22 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<form method="POST" >
+
+    {{ form_vid.hidden_tag() }}  <!-- Include CSRF token -->
+    
+    {{ form_vid.title.label() }}
+    {{ form_vid.title }}<br><br>
+    
+    {{ form_vid.discription.label() }}
+    {{ form_vid.discription }}<br><br>
+    
+    {{ form_vid.duration.label() }}
+    {{ form_vid.duration }}<br><br>
+    
+    {{ form_vid.video_link.label() }}
+    {{ form_vid.video_link }}<br><br>
+    
+    {{ form_vid.submit() }}
+</form>
+
+{% endblock %}

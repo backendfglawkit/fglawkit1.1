@@ -1,0 +1,21 @@
+.item img {
+  transform: scale(.92);
+  transition: all ease 0.6s;
+}
+
+.item:hover img {
+  transform: scale(.85);
+}
+
+.owl-item.active.center .slider-caption {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all ease 0.4s;
+}
+
+.owl-nav {
+  text-align: center;
+}
+
+
+

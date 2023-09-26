@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="d-flex d-xl-flex align-items-center align-items-xl-center mt-5" style="width: 100%;height: 100%;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url('{{ url_for('static', filename='img/durvill_logo.jpg') }}');"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">Welcome To FG LawKit</h4>
+                                    </div>
+                                    <form class="user" method="POST">
+                                        {{ form.hidden_tag() }}
+                                        <div class="mb-3">
+                                            {{ form.firstname(class="form-control form-control-user",type="text",placeholder="Enter Your Name...",id="exampleInputname") }}
+                                        </div>
+                                        <div class="mb-3">
+                                            {{ form.email(class="form-control form-control-user",type="email",placeholder="Enter Your Email",id="exampleInputEmail") }}
+                                        </div>
+                                        <div class="mb-3">
+                                            {{ form.password(class="form-control form-control-user",type="password",id="exampleInputPassword",placeholder="Password") }}
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Gender:</label>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="options" id="male" value="male" required>
+                                                <label class="form-check-label" for="male">Male</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="options" id="female" value="female" required>
+                                                <label class="form-check-label" for="female">Female</label>
+                                            </div>
+                                        </div>
+                                    {{ form.submit(class="btn d-block btn-user w-100", style=" color: #ffffff; background: #00B2FF; font-weight: bold;") }}
+                                        <hr>
+                                    </form>
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                    <div class="flash {{ messages[-1][0] }}">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ messages[-1][1] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                                    <div class="text-center">Already have a Account ! <span><a class="small" href="{{ url_for('login') }}" style="color: #00B2FF;">Login</a></span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

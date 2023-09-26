@@ -1,0 +1,70 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+<center>
+    <button><a href="{{ url_for('Admin_rambaan.rambaan_categories') }}">Add Categories</a></button>
+    <button><a href="{{ url_for('Admin_rambaan.add_rambaan_categories_tags') }}">Add Tags</a></button>
+</center>
+
+
+<br>
+<table border = 4 >
+    <thead>
+        <tr>
+          
+            <th>Category Name</th>
+            <th>Short Dictionary</th>
+            <th>Long Dictionary</th>
+            <th>Rating</th>
+            <th>Image Link</th>
+            <th>Video Link</th>
+            <th>Category Code</th>
+            <th>Features</th>
+            <th>Card Tags</th>
+
+            <th>Add videos</th>
+            <th>View</th>
+
+            <th>delete videos</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in list_of_rambaan %}
+            <tr>
+                
+                <td>{{ item.rambaan_categories_name }}  <br><a href="rambaan_change/{{item.rambaan_categories_code}}/rambaan_categories_name"><button>change</button></td>
+                <td>{{ item.short_dic[:20] }}...                <br><a href="rambaan_change/{{item.rambaan_categories_code}}/short_dic"><button>change</button></td>
+                <td>{{ item.long_dic[:50] }}....                 <br><a href="rambaan_change/{{item.rambaan_categories_code}}/long_dic"><button>change</button></td>
+                <td>{{ item.rating }}                   <br><a href="rambaan_change/{{item.rambaan_categories_code}}/rating"><button>change</button></td>
+                <td>{{ item.image_link }}               <br><a href="rambaan_change/{{item.rambaan_categories_code}}/image_link"><button>change</button></td>
+                <td>{{ item.video_link }}               <br><a href="rambaan_change/{{item.rambaan_categories_code}}/video_link"><button>change</button></td>
+                <td>{{ item.rambaan_categories_code }}</td>
+                <td>
+                    <ul>
+                        {% for feature in item.feature %}
+                            <li>{{ feature }}</li>
+                            {% endfor %}
+                        <br><a href="rambaan_change/{{item.rambaan_categories_code}}/feature"><button>change</button>
+                    </ul>
+                </td>
+                
+                <td>
+                    <ul>
+                        {% for card_tag in item.card_tags %}
+                            <li>{{ card_tag }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+
+                <td><a href="rambaan/{{ item.rambaan_categories_code }}/add_video"><button>add videos</button></a></td>
+                <td><a href="rambaan/{{ item.rambaan_categories_code }}/view_rambaan_category"><button>view videos</button></a></td>
+                <td><a href="rambaan/{{ item.rambaan_categories_code }}/del_rambaan_category"><button>delete categories videos</button></a></td>
+
+        
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

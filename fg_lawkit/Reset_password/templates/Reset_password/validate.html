@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="d-flex d-xl-flex align-items-center align-items-xl-center" style="width: 100%;height: 100%;  padding:50px;">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 col-xxl-6 offset-xxl-0 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;assets/img/durvill_logo.jpg&quot;);"></div>
+                            </div>
+                            <div class="col-sm-10 col-md-9 col-lg-5 col-xxl-4 offset-sm-1 offset-md-1 offset-xxl-1">
+                                <div class="p-5" style="padding: 60px;">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4"><strong>Enter OTP</strong></h4>
+                                    </div>
+                                    <form class="user" method="POST" >
+                                        {{ form.hidden_tag() }}
+
+                                        <div style="margin: 10px;">
+                                            <div class="row" name="any_name">
+                                                <div class="col">{{ form.number1(class="form-control form-control partition_input",minlength="1", maxlength="1") }}</div>
+                                                <div class="col">{{ form.number2(class="form-control form-control partition_input",minlength="1", maxlength="1") }}</div>
+                                                <div class="col">{{ form.number3(class="form-control form-control partition_input",minlength="1", maxlength="1") }}</div>
+                                                <div class="col">{{ form.number4(class="form-control form-control partition_input",minlength="1", maxlength="1") }}</div>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="custom-control custom-checkbox small"></div>
+                                        </div><button class="btn d-block btn-user w-100" type="submit" style=" color: #ffffff; background: #00B2FF; font-weight: bold;">Confirm OTP</button>
+                                        <hr>
+                                    </form>
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                    <div class="flash {{ messages[-1][0] }}">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ messages[-1][1] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                                    <div class="text-center">
+                                        <p class="text-end">OTP is sent to Your Mail</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

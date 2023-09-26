@@ -1,0 +1,149 @@
+{% extends "dashboard.html" %}
+{% block content %}
+
+<h1 class="text-center fw-bold mb-0">Active Mocks</h1>
+<p class="mx-auto text-center"
+  style="height: 2.3px; width: 35vw; max-width: 170px; background-color: black; transform: translateX(0%);"></p>
+
+
+
+
+
+<div class="row row-cols-1 row-cols-md-2 g-5 my-4">
+
+  {% for i in pur_course %}
+  <div class="col">
+    <div class="card h-100">
+      <img src={{img[i['subject_name']]}} class="card-img-top" alt="..." />
+      <div class="card-body m-0 p-0" style="background-color: rgb(218, 213, 213)">
+        <h5 class="text-center fw-bold py-2 border-bottom border-dark">
+          {{i['subject_name']}}
+        </h5>
+        <div class="container mt-1">
+          <table class="table table-responsive table-borderless">
+            <thead>
+              <tr>
+                <th class="p-0 m-0">Name</th>
+                <th class="p-0 m-0">I</th>
+                <th class="p-0 m-0">II</th>
+                <th class="p-0 m-0">III</th>
+                <th class="p-0 m-0">Avg.</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in i['mocks'] %}
+              <tr>
+                <td class="p-0 m-0">{{data}}</td>
+                <td class="p-0 m-0">{{i['mocks'][data][0]}}</td>
+                <td class="p-0 m-0">{{i['mocks'][data][1]}}</td>
+                <td class="p-0 m-0">{{i['mocks'][data][2]}}</td>
+                <td class="p-0 m-0">{{avg[data]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+        <p class="mt-4 text-end mb-0 pe-1" style="font-size: 13px; color: rgb(240, 86, 109)">
+          Expiry Date: {{i['expiry_date']}}
+        </p>
+      </div>
+      <div class="card-footer" style="
+                              border: none;
+                              background-color: rgb(240, 86, 109);
+                            ">
+                            
+        <a style="text-decoration:none"
+          href="{{ url_for('Student_mocks.Student_admin_sub', value=i['subject_code']) }}">
+          <button class="d-block w-100 text-white fw-bold fs-4 text-center" style="
+                                border: none;
+                                background-color: rgb(240, 86, 109);
+                              ">
+            Apply
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<hr>
+
+{#
+
+  this feature will active in future
+<h1 class="text-center fw-bold mb-0">Expired Mocks</h1>
+<button>clear</button>
+<p class="mx-auto text-center"
+  style="height: 2.3px; width: 35vw; max-width: 170px; background-color: black; transform: translateX(0%);"></p>
+
+<div class="row row-cols-1 row-cols-md-2 g-5 my-4">
+
+  {% for i in exp_course %}
+  <div class="col">
+    <div class="card h-100">
+      <img src={{img[i['subject_name']]}} class="card-img-top" alt="..." />
+      <div class="card-body m-0 p-0" style="background-color: rgb(218, 213, 213)">
+        <h5 class="text-center fw-bold py-2 border-bottom border-dark">
+          {{i['subject_name']}}
+        </h5>
+        <div class="container mt-1">
+          <table class="table table-responsive table-borderless">
+            <thead>
+              <tr>
+                <th class="p-0 m-0">Name</th>
+                <th class="p-0 m-0">I</th>
+                <th class="p-0 m-0">II</th>
+                <th class="p-0 m-0">III</th>
+                <th class="p-0 m-0">Avg.</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for data in i['mocks'] %}
+              <tr>
+                <td class="p-0 m-0">{{data}}</td>
+                <td class="p-0 m-0">{{i['mocks'][data][0]}}</td>
+                <td class="p-0 m-0">{{i['mocks'][data][1]}}</td>
+                <td class="p-0 m-0">{{i['mocks'][data][2]}}</td>
+                <td class="p-0 m-0">{{avg[data]}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+
+        </div>
+        <p class="mt-4 text-end mb-0 pe-1" style="font-size: 13px; color: rgb(240, 86, 109)">
+          Expiry Date: {{i['expiry_date']}}
+        </p>
+      </div>
+      <div class="card-footer" style="
+                              border: none;
+                              background-color: rgb(50, 86, 109);
+                            ">
+                            
+        <a style="text-decoration:none"
+          href="{{ url_for('Student_mocks.buy_mock', value=i['subject_code']) }}">
+          <button class="d-block w-100 text-white fw-bold fs-4 text-center" style="
+                                border: none;
+                                background-color: rgb(50, 86, 109);
+                              ">
+                              Re-Buy
+          </button>
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+#}
+<script>
+  // Disable the back button
+  window.onload = function () {
+    history.pushState(null, null, location.href);
+    window.onpopstate = function () {
+      history.go(1);
+    };
+  };
+</script>
+
+{% endblock %}

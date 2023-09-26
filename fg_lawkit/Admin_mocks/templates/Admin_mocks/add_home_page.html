@@ -1,0 +1,42 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<h1>add home page card</h1>
+<form method="POST" >
+    {{ form.csrf_token }}
+    {{ form.subject_name.label }} {{ form.subject_name }}<br><hr>
+    {{ form.subject_code.label }} {{ form.subject_code }}<br><hr>
+    {{ form.title.label }} {{ form.title }}<br><hr>
+    {{ form.sub_title.label }} {{ form.sub_title }}<br><hr>
+    {{ form.video.label }} {{ form.video }}<br><hr>
+    {{ form.image.label }} {{ form.image }}<br><hr>
+    {{ form.dic.label }} {{ form.dic }}<br><hr>
+    {{ form.paper.label }} {{ form.paper }}<br><hr>
+    {{ form.question.label }} {{ form.question }}<br><hr>
+    {{ form.price.label }} {{ form.price }}<br><hr>
+    {{ form.discout.label }} {{ form.discout }}<br><hr>
+    
+    <h2>Suggested_Course</h2>
+    {% for nested in form.suggested_course %}
+            {{ nested.label }}{{ nested }}
+        {% endfor %}<br><hr>
+    <h2>Features</h2>
+    
+    {% for nested in form.feature %}
+            {{ nested.label }}{{ nested }}
+        {% endfor %}<br><hr>
+    <h2>FAQ</h2>
+
+    {% for nested in form.faq %}
+            {{ nested.label }}{{ nested }}
+    {% endfor %}<br><hr>
+    <h2>Mock contains</h2>
+    {% for nested in form.paper_code %}
+        {{ nested.label }}{{ nested }}
+    {% endfor %}<br><hr>
+
+
+    {{ form.submit() }}
+</form>
+
+
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+<div class="container py-4 py-xl-5">
+    <div class="row d-lg-flex justify-content-lg-center mb-3">
+        <div class="col-lg-6 col-xl-7 col-xxl-8">
+            <div class="row">
+                <div class="col">
+                    <div class="card shadow mb-3">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold" style="font-size: 20px;">{{data['title']}}</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="ratio ratio-16x9"><iframe src="{{data['link']}}"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-lg-6 col-xl-5 col-xxl-4 offset-lg-0 offset-xxl-0">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="text-primary fw-bold m-0" style="font-size: 31px;">Explore&nbsp;</h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group">
+                        {% for i in data1 %}
+                        <li class="list-group-item" style="margin-bottom: 25px;border-width: 0px;">
+                            <div class="card"><img class="card-img-top w-100 d-block" style="height: 130px;" src="{{i['image_link']}}">
+                                <div class="card-footer" style="background: rgb(255,106,106);">
+                                    <a href="{{ url_for('Student_rambaan.rambaan_view', value=i.rambaan_categories_code) }}" style="text-decoration: none;">
+                                      <h5 style="text-align: center; font-weight: bold; color: rgb(255, 255, 255);">{{i['rambaan_categories_name']}}</h5>
+                                  </a>  
+                                  </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

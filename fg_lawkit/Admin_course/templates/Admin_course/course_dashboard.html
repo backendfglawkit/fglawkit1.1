@@ -1,0 +1,54 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<center>
+<button><a href="{{ url_for('Admin_course.add_courses')}}">add course</a></button>
+</center>
+
+<br>
+<br>
+<table border = 1> 
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Course Code</th>
+        <th>Short Description</th>
+        <th>Long Description</th>
+        <th>Features</th>
+        <th>Image Link</th>
+        <th>Video Link</th>
+        <th>Price</th>
+        <th>View</th>
+        <th>Delete</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      {% for course_data in list_of_course %}
+        <tr>
+          <td>{{ course_data.course }}</td>
+          <td>{{ course_data.course_code }}</td>
+          <td>{{ course_data.short_dic }}</td>
+          <td>{{ course_data.long_dic }}</td>
+          <td>
+            <ul>
+              {% for feature in course_data.feature %}
+                <li>{{ feature }}</li>
+              {% endfor %}
+            </ul>
+          </td>
+          <td><a href="{{ course_data.image_link }}">Image</a></td>
+          <td><a href="{{ course_data.video_link }}">Watch Video</a></td>
+          <td>{{ course_data.price }}</td>
+          <td>  
+            
+            <button><a href="{{ url_for('Admin_course.view_inside',course_code=course_data.course_code)}}">View</a></button>
+            
+          </td>
+          <td>
+            <button><a href="{{ url_for('Admin_course.delete_course',value=course_data.course_code)}}">Delete</a></button>
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

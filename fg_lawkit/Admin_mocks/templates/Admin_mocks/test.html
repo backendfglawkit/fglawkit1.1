@@ -1,0 +1,40 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+<h1>Answere:</h1>
+<h2>Subject Name ---{{ l [0]['subject_name']}}</h2>
+<h2>Paper Number ---{{ l [0]['paper_code']}}</h2>
+
+<hr>
+
+
+<table border="1">
+    <tr>
+        <th>Sr. No</th>
+        <th>Question</th>
+        <th>Option 1</th>
+        <th>Option 2</th>
+        <th>Option 3</th>
+        <th>Option 4</th>
+        <th>Solution</th>
+
+
+    </tr>
+    {% for item in l[0]['Question_paper'] %}
+    <tr>
+
+        <td>{{ item['sr_no'] }}</td>
+        <td>{{ item['question'] }}</td>
+        <td>{{ item['option']['o1'] }}</td>
+        <td>{{ item['option']['o2'] }}</td>
+        <td>{{ item['option']['o3'] }}</td>
+        <td>{{ item['option']['o4'] }}</td>
+        <td>{{ s[item['sr_no'] | string] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+<hr>
+
+
+
+{% endblock %}

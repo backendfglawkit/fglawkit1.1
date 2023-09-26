@@ -1,0 +1,35 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+<h1 class="text-center fw-bold mb-0">Course</h1>
+<p class="mx-auto text-center"
+  style="height: 2.3px; width: 35vw; max-width: 90px; background-color: black; transform: translateX(0%);"></p>
+<hr>
+
+
+{% if data != None %}
+<div class="container">
+    <div class="row">
+      {% for item in data %}
+        <div class="col-md-4" style="padding-bottom: 8px;padding-top: 8px;">
+            <div class="card shadow"><img class="card-img-top w-100 d-block " style="height: 211px;" loading="eager" src="{{item['image_link']}}">
+                <hr>
+                <div class="card-body" style="min-height: 220px;">
+                    <strong><h3 class="card-title">{{item['course']}}</h3></strong>
+                    <p>{{item['short_dic']}}</p>
+                    
+                </div>
+                <div class="card-footer" style="background: rgb(255,106,106);">
+                  <a href="{{ url_for('Student_course.course_view', value=item['course_code']) }}" style="text-decoration: none;">
+                    <h4 style="text-align: center; font-weight: bold; color: rgb(255, 255, 255);">Start Learning</h4>
+                </a>  
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+{% endif %}
+
+{% endblock %}

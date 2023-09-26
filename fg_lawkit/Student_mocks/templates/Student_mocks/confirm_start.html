@@ -1,0 +1,56 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+
+    <script>
+     function disableSubmit() {
+      document.getElementById("submit").disabled = true;
+     }
+    
+      function activateButton(element) {
+    
+          if(element.checked) {
+            document.getElementById("submit").disabled = false;
+           }
+           else  {
+            document.getElementById("submit").disabled = true;
+          }
+    
+      }
+    </script>
+
+    
+    <body onload="disableSubmit()">
+        <div class="card" style="margin: 20px;border-radius: 14px;">
+            <div class="card-body" style="overflow-y: scroll;max-height: 600px;">
+                <h4 class="card-title" style="text-align: center;font-weight: bold;color: rgb(0,0,0);font-size: 40px;">Mock Test Terms and Conditions</h4>
+                <ul class="list-group">
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>1.Number of Attempts:</b>Each user is allowed to attempt a single mock test not more than two (2) times after purchasing.</span><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>2.No Page Reloading:</b>While attempting a mock test, users are prohibited from reloading or refreshing the page. This can lead to disqualification from the test.</b></span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>3.Question Navigation:</b>Users can only navigate forward through the questions during the mock test. Moving to previous questions is not allowed.</b></span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>4.Technical Issues:</b>The website is not liable for any technical issues, including but not limited to electricity or internet disruptions, that may disrupt your test-taking experience. In case of such issues, the website will not allow users to re-attempt the mock test. </span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>5.Submission Finality:</b>Once a user submits the mock test, whether intentionally or by mistake, they cannot re-attempt the test.</span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>6.User Conduct:</b>Users are expected to maintain the highest standards of integrity during the mock test. Any form of cheating, plagiarism, or inappropriate behaviour will result in immediate disqualification and may lead to further action.</span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>7.Refunds:</b>Refunds are not provided for mock test purchases. Please ensure your eligibility and readiness before making a purchase and all content, including questions, answers, and any other materials provided during the mock test, are the intellectual property of the website and may not be reproduced, distributed, or used for any purpose other than the intended test-taking.</span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>8.User Data:</b>The website will collect and store user data as outlined in our Privacy Policy. By using the Service, you consent to the collection and use of your data as described in our Privacy Policy.</span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>9.Modification of Terms:</b>The website reserves the right to modify these Terms at any time. Users will be notified of any changes, and continued use of the Service after changes are made constitutes acceptance of the modified Terms.</span><br><br><br></span></li>
+                    <li class="list-group-item"><span><br><span style="color: rgb(0, 0, 0);"><b>10.Termination of Service:</b>The website reserves the right to terminate or suspend the Service, in part or in full, at its discretion without prior notice.
+                        By accessing and using this Service, you acknowledge that you have read, understood, and agreed to these Terms and the Privacy Policy. If you do not agree with these Terms, please refrain from using the Service.
+                        </span><br><br><br></span></li>
+                    
+                </ul>
+                <div style="margin: 2px;padding: 2px;">     <input type="checkbox" name="terms" id="terms" onchange="activateButton(this)">  I Agree Terms & Coditions
+                    <br><br>
+                    <form method="POST" >
+                        {{ form.hidden_tag() }}
+                        {{ form.submiti(type="submit" ,class="btn btn-primary" ,id="submit") }}
+                    </form></div>
+            </div>
+        </div>
+
+
+
+    </body>
+
+{% endblock %}

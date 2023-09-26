@@ -1,0 +1,29 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Sr. No.</th>
+        <th scope="col">Problem</th>
+        <th scope="col">Transaction-Id</th>
+        <th scope="col">Categories</th>
+        <th scope="col">Sub-Categories</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for i in data %}
+      <tr>
+        <th scope="row">{{loop.index}}</th>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+        <td>{{i[3]}}</td>
+       
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+
+<h2>Result : <strong>{{query}}</strong></h2>
+
+
+<div class="container">
+    <div class="row">
+        {% for i in tag %}
+        <div class="col-md-4" style="padding-bottom: 8px;padding-top: 8px;">
+            <div class="card shadow">
+
+                <div class="card-body" style="min-height: 50px;">
+                    <center><h4 style="min-height: 100px;" class="card-title">{{i['title']}}</h5></center>
+                        <hr>
+                    <div style="margin-top: 25px;margin-bottom: 4px;">
+                        {% for j in i['tags'] %}
+                            <button class="btn btn-primary" type="button" style="font-size: 11px;border-radius: 37.6px;font-weight: bold;letter-spacing: 2px;margin-right: 5px;margin-bottom: 5px;">{{j}}</button>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="card-footer" style="background: rgb(255, 106, 106);">
+                    <a href="play_single_rambaan_video/{{ loop.index }}" style="text-decoration: none;">
+                        <h4 style="text-align: center; font-weight: bold; color: rgb(255, 255, 255);">Watch</h4>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+
+
+{% endblock %}

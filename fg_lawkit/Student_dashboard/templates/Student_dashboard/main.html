@@ -1,0 +1,93 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center fw-bold mb-0">Dashboard</h1>
+    <p class="mx-auto text-center"
+  style="height: 2.3px; width: 35vw; max-width: 90px; background-color: black; transform: translateX(0%);"></p>
+
+<div class="d-sm-flex justify-content-between align-items-center mb-4">
+
+</div>
+<div class="row">
+    <div class="col-lg-6 mb-4">
+        <div class="card">
+            <div class="card-body" style="text-align: center;"><img class="rubberBand animated" style="border-radius: 50%;width: 160px;height: 160px;" src="{{profile_pic}}">
+                <div style="margin: 5px;">
+                    <p style="margin-bottom: 0px;">Name: {{name}}&nbsp;</p>
+                </div>
+                <div style="margin: 0px;">
+                    <p>&nbsp;Email:{{email}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6 mb-4">
+        <div class="card shadow mb-4" style="margin-bottom: 24px;height: 261.8px;">
+            <div class="card-header py-3">
+                <h6 class="text-primary fw-bold m-0">Do Comment On Our YouTube - 
+                </h6>
+            </div>
+            <ul class="list-group list-group-flush" style="overflow-y-hidden: scroll;height: 188.6px;">
+                <li class="list-group-item">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-lg-12 me-2">
+                            <h6 class="mb-0"><strong>Guest You Want On Podcast</strong></h6>
+                        </div>
+                    </div>
+                </li>
+                <li class="list-group-item">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-lg-12 me-2">
+                            <h6 class="mb-0"><strong>Book Review You Want</strong></h6>
+                        </div>
+                    </div>
+                </li><li class="list-group-item">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col-lg-12 me-2">
+                            <h6 class="mb-0"><strong>Courses You Want</strong></h6>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-bottom: 15px;">
+    <div class="col-md-12" style="margin-bottom: 50px;">
+        <h1>Free Law Semester Coverage!</h1>
+        <div class="slider owl-carousel p-1" style="margin-bottom: 20px;">
+            
+            <div class="item border" style="margin: 12px;">
+                <a href="https://www.youtube.com/playlist?list=PL-1DBVyVi7EaCojbQa5_XKBVJqA1y1REh">
+                <img  style="width: 400px;height: 225px;"src="https://i.pinimg.com/750x/f4/73/3b/f4733b72b7c34add8002b90e38185c5b.jpg">
+                </a>
+            </div><div class="item border" style="margin: 12px;">
+                <a href="https://www.youtube.com/playlist?list=PL-1DBVyVi7EaT4mxCtXzk6_jxjSCNNxgK">
+                <img  style="width: 400px;height: 225px;"src="https://i.pinimg.com/750x/a1/56/71/a156718f3cf842a329d99963151ecd9e.jpg">
+                </a>
+            </div>
+            <div class="item border" style="margin: 12px;">
+                <a href="https://www.youtube.com/playlist?list=PL-1DBVyVi7EajInPYQ0NSknpuSrGXGC9h">
+                <img  style="width: 400px;height: 225px;"src="https://i.pinimg.com/750x/64/38/2f/64382f86ff900c78d015829c8e3f49cd.jpg">
+                </a>
+            </div>
+            <div class="item border" style="margin: 12px;">
+                <a href="https://www.youtube.com/playlist?list=PL-1DBVyVi7EZiklc0vT4CoWI_ltUd9J5y">
+                <img  style="width: 400px;height: 225px;"src="https://i.pinimg.com/750x/6f/73/4d/6f734d84c31fa37a8b5f41a3244c52ca.jpg">
+                </a>
+            </div>
+            <div class="item border" style="margin: 12px;">
+                <a href="https://www.youtube.com/playlist?list=PL-1DBVyVi7Eb-eg2-LbhEhGs8gITvNYIa">
+                <img  style="width: 400px;height: 225px;"src="https://i.pinimg.com/750x/a4/13/30/a41330dac006ff49c6f9dca5d2e709a3.jpg">
+                </a>
+            </div>
+            <div class="item border" style="margin: 12px;">
+                <a href="https://www.youtube.com/playlist?list=PL-1DBVyVi7EbwP4ful1pepb3Jjj24Snfo">
+                <img  style="width: 400px;height: 225px;"src="https://i.pinimg.com/750x/47/77/66/477766db7a38f0ef234b8ddffe226fc9.jpg">
+                </a>
+            </div>
+            
+        </div>
+    </div>
+</div>    
+{% endblock %}

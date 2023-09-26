@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Text on one side -->
+    <div class="col-lg-6 col-12 hero-text ">
+      <h1 class="mb-4"><b>Responsive Hero asdas dasddsas ds asdsa dsdsa dasd asdsadasd</b></h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante
+        dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
+        cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent
+        libero. Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio.
+        Praesent libero. Sed cursus ante dapibus diam.</p>
+      <button class="btn mt-3 hero-getstarted">Register</button>
+      {#<button class="btn mt-3 hero-getstarted1">Learn More</button>#}
+    </div>
+    <!-- Card on the other side -->
+    <div class="col-lg-6 col-12 hero-card px-auto bg-white">
+      <div class="card mx-auto" style="width: 70%;">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://player.vimeo.com/video/347119375?h=1699409fe2"></iframe>
+        </div>
+        <div class="card-body">
+          <div>
+            <p class="card-text">he card's content.Some quick example text to build on the card's content.Some quick
+              example text to build on the card's content.Some quick example text to build on the card's content.</p>
+          </div>
+          <div>
+            <ul class="hero-list">
+              <li><i class="bi bi-award"></i>this is featrue</li>
+              <li><i class="bi bi-award"></i>this is featrue</li>
+              <li><i class="bi bi-award"></i>this is featrue</li>
+              <li><i class="bi bi-award"></i>this is featrue</li>
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer" style="background: #00B2FF;">
+          <a href="#">
+            <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Buy Now</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<div class="row">
+  <div class="col m-3">
+    <h1 class="text-center"><b>Mocks</b></h1>
+    <p class="mx-auto text-center"
+      style="height: 2.3px; width: 35vw; max-width: 90px; background-color: black; transform: translateX(0%);"></p>
+  </div>
+</div>
+
+  <div class="row mx-3">
+
+
+    {% for i in course_data %}
+
+    <div class="col-lg-6 col-xl-4 py-4 col-12">
+      <div class="card mx-auto" style="width: 80%;">
+        <img src="{{i['image']}}" class="card-img-top" style="height: 211px;" loading="eager" alt="Card Image">
+        <div class="card-body" style="min-height: 250px;">
+          <div>
+            <h2><b>{{ i['subject_name']}}</b></h2>
+          </div>
+          <hr>
+          <div class="mb-5" style="min-height: 80px;">
+            <p class="card-text">{{i['sub_title']}} </p>
+          </div>
+
+
+          <div class="d-flex">
+            <h6><b>No. of Paper : {{i['no_of_paper']}}</b></h6>
+          </div>
+          <div class="d-flex">
+            <h6><b>No. of Question : {{i['no_of_question']}}</b></h6>
+          </div>
+
+        </div>
+        <div class="card-footer" style="background: #00B2FF;">
+          <a href="{{ url_for('mocks_detail', value=i['subject_code']) }}">
+            <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Buy Now</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+
+  </div>
+</div>
+
+
+{% endblock %}

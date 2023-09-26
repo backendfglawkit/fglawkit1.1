@@ -1,0 +1,100 @@
+
+{% extends 'base.html' %}
+
+{% block content %}<br><br>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <!-- Text on one side -->
+        <div class="col-lg-6 col-12 hero-text ">
+            <h1 class="mb-4"><b>Responsive Hero asdas dasddsas ds asdsa dsdsa  dasd asdsadasd</b></h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.</p>
+            <button class="btn mt-3 hero-getstarted">Register</button>
+            {#<button class="btn mt-3 hero-getstarted1">Learn More</button>#}
+        </div>
+        <!-- Card on the other side -->
+        <div class="col-lg-6 col-12 hero-card px-auto bg-white">
+            <div class="card mx-auto" style="width: 70%;">
+                <div class="ratio ratio-16x9">
+                  <iframe src="https://player.vimeo.com/video/347119375?h=1699409fe2"></iframe>
+                </div>
+                <div class="card-body">
+                  <div>
+                    <p class="card-text">he card's content.Some quick example text to build on the card's content.Some quick example text to build on the card's content.Some quick example text to build on the card's content.</p>
+                  </div>
+                  <div >
+                    <ul class="hero-list">
+                      <li><i class="bi bi-award"></i>this is featrue</li>
+                      <li><i class="bi bi-award"></i>this is featrue</li>
+                      <li><i class="bi bi-award"></i>this is featrue</li>
+                     <li><i class="bi bi-award"></i>this is featrue</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-footer" style="background: #00B2FF;">
+                  <a href="{{ url_for('Student_rambaan.proced_to_buy') }}">
+                    <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Buy Now</h4>
+                  </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row">
+      <div class="col m-3">
+      <h1 class="text-center"><b>Rambaan Drafting</b></h1>
+      <p class="mx-auto text-center"
+    style="height: 2.3px; width: 35vw; max-width: 170px; background-color: black; transform: translateX(0%);"></p>
+    <p class="text-center">Lorem ipsum dolor sit amet, consect, stempor incididunt ut labore et dolore magna aliqua.</p>
+  </div>
+  </div>
+
+
+
+  <div class="row mx-3">
+    {% for item in list_of_rambaan %}
+
+     <div class="col-lg-6 col-xl-4 py-4 col-12">
+      <div class="card mx-auto" style="width: 80%;">
+        <img src="{{item['image_link']}}" class="card-img-top" style="height: 211px;" loading="eager" alt="Card Image" >
+        <div class="card-body" style="min-height: 250px;">
+          <h4><b>{{item['rambaan_categories_name']}}</b></h4>
+          <hr>
+          <div>
+            <p class="card-text">{{item['short_dic']}}</p>
+          </div>
+          <div style="margin-top: 19px;margin-bottom: 4px;">
+            {% for j in item['card_tags'] %}
+            <a href="#"><button class="btn " type="button" style="font-size: 14px;border-radius: 37.6px;font-weight: bold;letter-spacing: 2px;margin-right: 5px;margin-bottom: 5px; background: #00B2FF; color: #ffffff; ">{{j}}</button></a>
+            {% endfor %}
+          </div>
+          {#<div >
+            <ul class="hero-list">
+              <li><i class="bi bi-award"></i>this is featrue</li>
+              <li><i class="bi bi-award"></i>this is featrue</li>
+              <li><i class="bi bi-award"></i>this is featrue</li>
+             <li><i class="bi bi-award"></i>this is featrue</li>
+            </ul>
+          </div>#}
+        </div>
+        <div class="card-footer" style="background: #00B2FF;">
+          <a href="{{ url_for('rambaan_details',value=item['_id']) }}">
+            <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Buy Now</h4>
+          </a>
+        </div>
+    </div>
+    </div>
+    {% endfor %}
+  </div>
+
+
+
+
+</div>
+
+
+{% endblock %}

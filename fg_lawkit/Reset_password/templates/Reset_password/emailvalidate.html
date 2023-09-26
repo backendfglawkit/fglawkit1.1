@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+<div class="d-flex d-xl-flex align-items-center align-items-xl-center" style="width: 100%;height: 100%; padding-top:50px">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-9 col-lg-12 col-xl-10">
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-flex">
+                                <div class="flex-grow-1 bg-login-image" style="background-image: url(&quot;assets/img/durvill_logo.jpg&quot;);"></div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-4">Confirm Email</h4>
+                                    </div>
+
+
+
+                                    <form class="user"  method="POST">
+                                         {{ form.hidden_tag() }}
+
+                                        <div class="mb-3">
+                                            {{ form.email(class="form-control form-control-user" ,type="email" ,id="exampleInputPassword" ,placeholder="Enter Your Email..." ) }}
+                                            
+                                        
+                                        </div>
+                                        <div class="mb-3">
+                                            <div class="custom-control custom-checkbox small"></div>
+                                        </div>
+
+                                            {{ form.submit(class="btn d-block btn-user w-100", type="submit" ,style=" color: #ffffff; background: #00B2FF; font-weight: bold;") }}
+
+                                        {#<button class="btn btn-primary d-block btn-user w-100" type="submit" style="background: #01703E;">Reset</button>#}
+                                        <hr>
+                                    </form>
+                                    {% with messages = get_flashed_messages(with_categories=true) %}
+                                    {% if messages %}
+                                    <div class="flash {{ messages[-1][0] }}">
+                                            <div class="alert alert-danger" role="alert">
+                                                {{ messages[-1][1] }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endwith %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

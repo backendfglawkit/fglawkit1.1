@@ -1,0 +1,56 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<h1>Add a New Course</h1>
+    <form method="POST">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+        {{ form.course.label }}: {{ form.course() }}<br><br>
+        {{ form.course_code.label }}: {{ form.course_code() }}<br><br>
+        {{ form.validate.label }}: {{ form.validate() }}<br><br>
+        <hr>
+        {{ form.short_dic.label }}: {{ form.short_dic() }}<br><br>
+        {{ form.long_dic.label }}: {{ form.long_dic() }}<br><br>
+        <hr>
+        {{ form.image_link.label }}: {{ form.image_link() }}<br><br>
+        {{ form.video_link.label }}: {{ form.video_link() }}<br><br>
+        <hr>
+        {{ form.price.label }}: {{ form.price() }}<br><br>
+
+        <h2>Features</h2>
+        {% for field in form.feature %}
+            {{ field.features.label }}: {{ field.features() }}<br><br>
+        {% endfor %}
+
+  
+
+        {{ form.submit() }}
+    </form>
+
+    {% if courses %}
+        <h2>Added Courses</h2>
+        <ul>
+            {% for course_data in courses %}
+                <li>
+                    <strong>{{ course_data.course }}</strong>
+                    <p>Course Code: {{ course_data.course_code }}</p>
+                    <p>Short Description: {{ course_data.short_dic }}</p>
+                    <p>Long Description: {{ course_data.long_dic }}</p>
+                    <p>Features: {{ ', '.join(course_data.feature) }}</p>
+                    <p>Image Link: {{ course_data.image_link }}</p>
+                    <p>Video Link: {{ course_data.video_link }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <ul class="flashes">
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+{% endblock %}

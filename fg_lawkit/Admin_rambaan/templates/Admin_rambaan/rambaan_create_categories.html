@@ -1,0 +1,33 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{ form. rambaan_categories_name.label }} {{ form. rambaan_categories_name }}<br><br>
+    {{ form.short_dic.label }} {{ form.short_dic }}<br><br>
+    {{ form.long_dic.label }} {{ form.long_dic }}<br><br>
+    {{ form.rating.label }} {{ form.rating }}<br><br>
+    {{ form.image_link.label }} {{ form.image_link }}<br><br>
+    {{ form.video_link.label }} {{ form.video_link }}<br><br>
+    
+    {{ form.rambaan_categories_code.label }} {{ form.rambaan_categories_code }}<br><br>
+
+    {{ form.options.label }}
+        <ul>
+            {% for subfield in form.options %}
+                <li>{{ subfield() }}-- {{subfield.label}}</li>
+            {% endfor %}
+        </ul>
+
+    {% for nested in form.feature %}
+        {{ nested.label }}{{ nested }}
+    {% endfor %}
+    <br><br>
+
+ 
+
+    {{form.submit}}
+</form>
+
+
+{% endblock %}

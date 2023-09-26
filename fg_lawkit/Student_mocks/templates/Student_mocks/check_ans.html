@@ -1,0 +1,112 @@
+{% extends "dashboard.html" %}
+{% block content %}
+
+
+
+{% set count = correct_ans|length %}
+<h2> You Got {{marks}} Out Of {{ count * 4 }}</h2>
+<!-- Assuming you have the `correct_ans`, `submitted_ans`, and `l` list available -->
+
+<!-- Loop through the questions in correct_ans -->
+{% for item, correct_answer in correct_ans.items() %}
+    {% set item_int = item | int - 1 %}
+    {% set user_answer = submitted_ans.get(item) %}
+
+    {% if user_answer is not none and correct_answer is not none %}
+        {% if user_answer == correct_answer %}
+        <div class="card" style="margin: 17px;border-radius: 6px;">
+        <span style="color: #0059ff;">
+                <div class="card-header">
+                    <div style="height: 30px;">
+                        <p>{{ l[item_int]['question'] }}</p>
+                    </div>
+                </div>
+            
+            <div class="card-body">
+            <p>a.{{ l[item_int]['option']['o1'] }}</p>
+            <p>b.{{ l[item_int]['option']['o2'] }}</p>
+            <p>c.{{ l[item_int]['option']['o3'] }}</p>
+            <p>d.{{ l[item_int]['option']['o4'] }}</p>
+                
+             <hr>   
+            <p><b>Correct Answer:-- option {{correct_answer}} </b><p>
+            <p><b>You Select:-- option {{user_answer}} </b><p>
+                
+            </span>
+        </div>
+        </div>
+
+        {% else %}
+
+        <div class="card" style="margin: 17px;border-radius: 6px;">
+            <span style="color: #FF0000;">
+                    <div class="card-header">
+                        <div style="height: 30px;">
+                            <p>{{ l[item_int]['question'] }}</p>
+                        </div>
+                    </div>
+                
+                <div class="card-body">
+                <p>a.{{ l[item_int]['option']['o1'] }}</p>
+                <p>b.{{ l[item_int]['option']['o2'] }}</p>
+                <p>c.{{ l[item_int]['option']['o3'] }}</p>
+                <p>d.{{ l[item_int]['option']['o4'] }}</p>
+                    
+                 <hr>   
+                <p><b>Correct Answer:-- option {{correct_answer}} </b><p>
+                <p><b>You Select:-- option {{user_answer}} </b><p>
+                    
+                </span>
+            </div>
+            </div>
+
+        {% endif %}
+    {% else %}
+    <div class="card" style="margin: 17px;border-radius: 6px;">
+        <span style="color: #ffaeee;">
+                <div class="card-header">
+                    <div style="height: 30px;">
+                        <p>{{ l[item_int]['question'] }}</p>
+                    </div>
+                </div>
+            
+            <div class="card-body">
+            <p>a.{{ l[item_int]['option']['o1'] }}</p>
+            <p>b.{{ l[item_int]['option']['o2'] }}</p>
+            <p>c.{{ l[item_int]['option']['o3'] }}</p>
+            <p>d.{{ l[item_int]['option']['o4'] }}</p>
+                
+             <hr>   
+            <p><b>Correct Answer:-- option {{correct_answer}} </b><p>
+            <p><b>You Select:-- option {{user_answer}} </b><p>
+                
+            </span>
+        </div>
+        </div>
+    
+    
+    
+    
+    </span>
+    {% endif %}
+
+    <!-- Nested loop to iterate over the list "l" -->
+    
+    {% endfor %}
+    
+    <div class ="text-center m-5">
+        <button class="btn btn-primary "><a class="text-decoration:none text-white " href="{{ url_for('Student_mocks.Student_admin') }}">Go to dashboard</a></button>
+    </div>
+
+    <script>
+        // Disable the back button
+        window.onload = function () {
+            history.pushState(null, null, location.href);
+            window.onpopstate = function () {
+                history.go(1);
+            };
+        };
+    </script>
+
+    
+{% endblock %}

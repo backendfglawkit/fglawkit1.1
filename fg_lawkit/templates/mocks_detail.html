@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <!-- Text on one side -->
+    <div class="col-lg-6 col-12 hero-text order-2 order-lg-1">
+      <div class="" style="padding-left: 30%;">
+      <h1 class="mb-4"><b>{{ course_data_from_db['subject_name'] }}</b></h1>
+      <p>{{ course_data_from_db['dic'] }}</p>
+      <div>
+          <ul class="hero-list">
+            <li><i class="bi bi-award"></i><h5>Number Of Paper -{{ course_data_from_db['no_of_paper'] }}</h5></li>
+            <li><i class="bi bi-award"></i><h5>Number Of Question -{{ course_data_from_db['no_of_question'] }}</h5></li>
+            <li><i class="bi bi-award"></i><h5>Duration - 30 Days</h5></li>
+          </ul>
+      </div>
+      <button class="btn mt-3 hero-getstarted">Register</button>
+      {#<button class="btn mt-3 hero-getstarted1">Learn More</button>#}
+    </div>
+    </div>
+    <!-- Card on the other side -->
+    <div class="col-lg-6 col-12 hero-card px-auto bg-white order-1 order-lg-2">
+      <div class="card mx-auto" style="width: 70%;">
+        <div class="ratio ratio-16x9">
+          <iframe src="https://player.vimeo.com/video/347119375?h=1699409fe2"></iframe>
+        </div>
+        <div class="card-body">
+          <div>
+            <h2 style="padding: 5px;"><strong>{{ course_data_from_db['subject_name'] }}</strong></h2>
+              <hr>
+            <p class="card-text">{{course_data_from_db['short_dic']}}</p>
+          </div>
+          <div>
+            <ul class="hero-list">
+              {% for j in course_data_from_db['feature'] %}
+              <li><i class="bi bi-award"></i>{{j}}</li>
+              
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+        <div class="card-footer" style="background: #00B2FF;">
+          <a href="{{ url_for('Student_mocks.buy_mock',value=course_data_from_db['subject_code']) }}">
+            <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Buy Now</h4>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}

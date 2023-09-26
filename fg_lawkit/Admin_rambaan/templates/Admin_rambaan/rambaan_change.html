@@ -1,0 +1,26 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+
+<h1>Change details:<u>{{value2}} </u>-----<u> {{value}} </u></h1>
+
+{% if value2=='faq' %}
+<form method="POST">
+    {{ form.csrf_token }}
+    {% for nested in form.faq %}
+    {{ nested.label }}{{ nested }}
+    {% endfor %}
+    {{ form.submit() }}
+</form>
+
+{% else %}
+<form method="POST">
+    {{ form.csrf_token }}
+    {{ form.text }}
+    {{ form.submit() }}
+</form>
+{% endif %}
+
+
+
+{% endblock %}

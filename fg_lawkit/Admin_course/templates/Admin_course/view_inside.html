@@ -1,0 +1,24 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<form method="POST">
+    {{ form_module.hidden_tag() }}
+    {{ form_module.module.label }}: {{ form_module.module() }}
+    {{form_module.submit}}
+</form>
+<hr>
+
+{% for i in content %}
+{{i}} -
+<button><a href="{{ url_for('Admin_course.add_videos',value=course_code,value2=i)}}">add_video</a></button>
+<button><a href="{{ url_for('Admin_course.add_reso',value=course_code,value2=i)}}">add_reso</a></button>
+<button><a href="{{ url_for('Admin_course.delete_module',value=course_code,value2=i)}}">delete module</a></button><br>
+
+{% for k in  content[i] %}
+
+{{k}}- <a href="{{ url_for('Admin_course.delete_details',value=course_code,value2=i,value3=k['title'],value4=k['description'])}}">delete</a><br>
+{% endfor %}
+<hr>
+
+{% endfor %}
+
+{% endblock %}

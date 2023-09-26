@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="{{ url_for('Student_dashboard.static', filename='css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic&amp;display=swap">
+    <style>
+        /* Apply a blurring effect to the entire page */
+        body.blur-effect {
+            filter: blur(500px);
+        }
+  
+        /* Display a message to users with JavaScript disabled */
+        noscript {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.8);
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+    </style>
+</head>
+
+<body style="user-select:none;">
+    
+    
+    <nav class="navbar navbar-light navbar-expand fixed-top bg-light navigation-clean pt-5">
+        <div class="container"><a class="navbar-brand" href="#">Brand</a>
+            
+            <div style="height: 31px;margin: 0px;width: 300px;" >
+                <p style="color: var(--bs-red);font-weight: bold;font-size: 18px;">Time Remaining:<span id="timer">3:00:00</span></p>
+            </div><button class="navbar-toggler" data-bs-toggle="collapse"></button>
+        </div>
+    </nav>
+    
+
+    <div class ="text-center fixed-top bg-light"><marquee style="color: var(--bs-red);font-weight: bold;font-size: 18px;" direction="scroll" behavior="scroll" scrollamount="10">Dont Reload! Otherwise Paper Will Submit, With No Response </marquee></div>
+    
+    <div class="card" style="margin: 19px;border-radius: 6px;margin-top: 69px;">
+        <div class="card-body" style="margin: 0px;">
+            <h1 style="text-align: center;">Quiz</h1>
+        </div>
+    </div>
+
+
+
+    <form id="quizForm" method="POST">
+      
+      
+      
+      {% for i in l %}
+    <div class="card" style="margin: 17px;border-radius: 6px;">
+
+      <div class="question card-header">
+        <div style="height: 30px;"> <p>Q.{{i['sr_no']}}. {{i['question']}}</p></div>
+      </div>
+      <div class="card-body">
+
+          <label><input type="radio" name="{{i['sr_no']}}" value="{{i['sr_no'] ~ 'o1'}}">{{i['option']['o1']}}</label><br>
+          <label><input type="radio" name="{{i['sr_no']}}" value="{{i['sr_no'] ~ 'o2'}}">{{i['option']['o2']}}</label><br>
+          <label><input type="radio" name="{{i['sr_no']}}" value="{{i['sr_no'] ~ 'o3'}}">{{i['option']['o3']}}</label><br>
+          <label><input type="radio" name="{{i['sr_no']}}" value="{{i['sr_no'] ~ 'o4'}}">{{i['option']['o4']}}</label><br>
+      
+        </div>
+    </div>
+      <hr>
+      {% endfor %}
+
+
+    <div class ="text-center m-5">
+      <input type="submit" name="submitBtn" value="Submit" id="submitButton" class="btn btn-outline-primary"></div>
+  </form>
+
+  <script>
+      // Function to toggle radio button selection
+      function toggleSelection(radio) {
+          radio.checked = !radio.checked;
+      }
+
+      // Function to auto-submit the form after 1 minute (60000 milliseconds)
+      function autoSubmitForm() {
+          document.getElementById('quizForm').submit();
+      }
+
+      // Set the timer to auto-submit the form
+      setTimeout(autoSubmitForm, 60000);
+
+      // Disable the back button
+      window.onload = function () {
+          history.pushState(null, null, location.href);
+          window.onpopstate = function () {
+              history.go(1);
+          };
+      };
+
+      // Function to check if the page has been reloaded
+      function checkReload() {
+          if (performance.navigation.type === 1) {
+              // Page has been reloaded, trigger the auto-submit button
+  
+              document.getElementById('submitButton').click();
+
+          }
+      }
+
+      // Attach the function to the page load event
+      window.addEventListener("load", checkReload);
+  </script>
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+         // Set the initial timer duration in seconds (300 minutes)
+         let durationInSeconds = 180 * 60;
+
+         // Function to update the countdown timer
+         function updateTimer() {
+             const hours = Math.floor(durationInSeconds / 3600);
+             const minutes = Math.floor((durationInSeconds % 3600) / 60);
+             const seconds = durationInSeconds % 60;
+ 
+             const formattedHours = String(hours).padStart(2, '0');
+             const formattedMinutes = String(minutes).padStart(2, '0');
+             const formattedSeconds = String(seconds).padStart(2, '0');
+ 
+             document.getElementById('timer').textContent = `${formattedHours}:${formattedMinutes}:${formattedSeconds}`;
+ 
+             // Check if the timer has reached 0
+             if (durationInSeconds === 0) {
+                 clearInterval(timer);
+                 alert('Time is up! Your quiz has ended.');
+             } else {
+                 durationInSeconds--;
+             }
+         }
+ 
+         // Initial call to set up the timer
+         updateTimer();
+ 
+         // Update the timer every second
+         const timer = setInterval(updateTimer, 1000);
+    </script>
+    <script>
+        // Function to disable right-click
+        function disableRightClick(event) {
+            event.preventDefault(); // Prevent the default right-click behavior
+        }
+
+        // Attach the event listener to the document
+        document.addEventListener('contextmenu', disableRightClick);
+    </script>
+  </body>
+</html>

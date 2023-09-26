@@ -1,0 +1,23 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+<form method="POST" action="">
+    {{ form.hidden_tag() }}
+    {{ form. title.label }} {{ form. title }}<br><br>
+    {{ form.discription.label }} {{ form.discription }}<br><br>
+    {{ form.rating.label }} {{ form.rating }}<br><br>
+    {{ form.link.label }} {{ form.link }}<br><br>
+    {{ form.watch_time.label }} {{ form.watch_time }}<br><br>
+    {{ form.options.label }}
+    <ul>
+        {% for subfield in form.options %}
+            <li>{{ subfield() }}-- {{subfield.label}}</li>
+        {% endfor %}
+    </ul>
+    {{form.submit}}
+</form>
+
+
+
+
+{% endblock %}

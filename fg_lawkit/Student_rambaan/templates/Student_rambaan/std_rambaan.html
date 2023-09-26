@@ -1,0 +1,88 @@
+{% extends "dashboard.html" %}
+
+
+<h1>rambaan</h1>
+{% block s_content %}
+<form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search" method="POST">
+    {{ form.hidden_tag() }}
+    <div class="input-group">
+        {{ form.name(class="bg-light form-control border-0 small", placeholder="Search for ...") }}
+        {{ form.submit(class="btn btn-primary p-2") }}
+    </div>
+  </form>
+
+  <ul class="navbar-nav flex-nowrap ms-auto">
+  <li class="nav-item dropdown d-sm-none no-arrow">
+    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i
+        class="fas fa-search"></i></a>
+    <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+      <form class="me-auto navbar-search w-100"  method="POST">
+        {{ form.hidden_tag() }}
+        <div class="input-group">
+        
+        {{ form.name(class="bg-light form-control border-0 small", type="text", placeholder="Search for ...") }}
+
+          <div class="input-group-append">
+            {{ form.submit(class="btn btn-primary p-2") }}
+           
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </li>
+</ul>
+{% endblock s_content %}
+
+
+
+
+
+
+
+
+{% block content %}
+
+<h1 class="text-center fw-bold mb-0">Rambaan</h1>
+<p class="mx-auto text-center"
+  style="height: 2.3px; width: 35vw; max-width: 170px; background-color: black; transform: translateX(0%);"></p>
+
+  <div style="text-align: center;margin: 12px;padding-bottom: 15px;padding-top: 15px;">
+    <a href="{{ url_for('Student_rambaan.rambaan') }}"><button class="btn btn-primary" type="button" style="border-radius: 31.6px;margin-right: 9px;margin-left: 9px; margin-top:5px;">All</button></a>
+    {% for tags in filter_tags %}
+    <a href="{{ url_for('Student_rambaan.rambaan_filter', value=tags) }}"><button class="btn btn-primary" type="button" style="border-radius: 31.6px;margin-right: 9px;margin-left: 9px; margin-top:5px;">{{tags}}</button></a>
+    {% endfor %}
+  </div>
+
+<hr>
+
+<div class="container">
+  <div class="row">
+    {% for item in data1 %}
+      <div class="col-md-4" style="padding-bottom: 8px;padding-top: 8px;">
+          <div class="card shadow"><img class="card-img-top w-100 d-block " style="height: 211px;" loading="eager" src="{{item['image_link']}}">
+              <div class="card-body" style="min-height: 212px;">
+                  <h5 class="card-title">{{item['rambaan_categories_name']}}</h5>
+                  <p>{{item['short_dic']}}</p>
+                  <div style="margin-top: 19px;margin-bottom: 4px;">
+                    {% for j in item['card_tags'] %}
+                    <a href="{{ url_for('Student_rambaan.rambaan_filter', value=j) }}"><button class="btn btn-primary" type="button" style="font-size: 11px;border-radius: 37.6px;font-weight: bold;letter-spacing: 2px;margin-right: 5px;margin-bottom: 5px;">{{j}}</button></a>
+                    {% endfor %}
+                  </div>
+              </div>
+              <div class="card-footer" style="background: rgb(255,106,106);">
+                <a href="{{ url_for('Student_rambaan.rambaan_view', value=item.rambaan_categories_code) }}" style="text-decoration: none;">
+                  <h4 style="text-align: center; font-weight: bold; color: rgb(255, 255, 255);">Watch</h4>
+              </a>  
+              </div>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+
+{% endblock %}
+
+

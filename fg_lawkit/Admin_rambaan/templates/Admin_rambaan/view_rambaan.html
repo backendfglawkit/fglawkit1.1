@@ -1,0 +1,40 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+    <h1>Rambaan Videos</h1>
+    <table border='1'>
+        <thead>
+            <tr>
+                <th>Serial Number</th>
+       
+                <th>Title</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>Link</th>
+                <th>Tags</th>
+                <th>delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for data in data1 %}
+                
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                       
+                        <td>{{ data['title'] }}</td>
+                        <td>{{ data['dis'] }}</td>
+                        <td>{{ data['rating'] }}</td>
+                        <td>{{ data['link'] }}</td>
+
+                        <td>{{ data['tags'] }}</td>
+                        <td><a href="{{ loop.index }}/del_video"><button>delete</button></a></td>
+                
+                    </tr>
+                
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{% endblock %}

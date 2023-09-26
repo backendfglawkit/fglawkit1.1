@@ -1,0 +1,39 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+
+<h1>sub</h1>
+<ul>
+<li><h4>here users means till date users</h4></li> 
+<li><h4>if u want that new user is not get the mocks then edit home page data</h4></li>
+</ul>
+this is 
+<table border='1'>
+    <tr>
+        <th>Paper Number</th>
+        <th>Paper Text To Display</th>
+        <th>No of questions</th>
+        <th>Time</th>
+        <th>View paper and solution</th>
+        <th>Delete</th>
+        <th>poke from users</th>
+
+    </tr>
+    {% for item in l %}
+    <tr>
+        <td>{{ item['paper_code'] }}</td>
+        <td>{{ item['paper_name'] }}</td>
+        <td>{{ item['Question_paper'] | length }}</td>
+        <td>{{ item['paper_duration'] }}</td>
+        <td><a href="{{ value }}/{{ item['paper_code'] }}"><button>View</button></a></td>
+        <td>
+            <a href="{{ value }}/{{ item['paper_code'] }}/del"><button>Delete</button></a>
+        </td>
+        <td>
+            <a href="{{ value }}/{{ item['paper_code'] }}/poke"><button>poke</button></a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<p>*if u want to edit answere to go database and edit </p>
+{% endblock %}
+

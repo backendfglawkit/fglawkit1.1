@@ -1,0 +1,17 @@
+{% extends "dashboard_admin.html" %}
+{% block inner %}
+<form method="POST" >
+
+    {{ form.hidden_tag() }}  <!-- Include CSRF token -->
+    
+    {{ form.title.label() }}
+    {{ form.title }}<br><br>
+    
+    {{ form.link.label() }}
+    {{ form.link }}<br><br>
+    
+
+    {{ form.submit() }}
+</form>
+
+{% endblock %}

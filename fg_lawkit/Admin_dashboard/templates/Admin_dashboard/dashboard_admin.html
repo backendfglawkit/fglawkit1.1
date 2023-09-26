@@ -1,0 +1,25 @@
+{% extends "base2.html" %}
+{% block content %}
+
+  <h1>admin_dashboard</h1>
+  <table border="1">
+    <tr>
+      <td><button><a href="{{ url_for('Admin_dashboard.analytics') }}">dashboard</a></button></td>
+      <td><button><a href="{{ url_for('Admin_mocks.mocks') }}">Mocks</a></button></td>
+      <td><button><a href="{{ url_for('Admin_rambaan.rambaan') }}">rambaan</a></button></td>
+      <td><button><a href="{{ url_for('Admin_user.user') }}">User</a></button></td>
+      <td><button><a href="{{ url_for('Admin_course.course_dashboard') }}">Course</a></button></td>
+      {#<td><button><a href="{{ url_for('Admin_') }}">view rambaan</a></button></td>
+      <td><button><a href="{{ url_for('Admin_') }}">Add rambaan categories</a></button></td>
+      <td><button><a href="{{ url_for('Admin_') }}">Add tags for rambaan</a></button></td>
+      <td><button><a href="{{ url_for('Admin_') }}">view user</a></button></td>#}     
+    </tr>
+  </table>
+  
+<hr>
+{% block inner %}
+
+{% endblock inner %}
+
+{% endblock %}
+

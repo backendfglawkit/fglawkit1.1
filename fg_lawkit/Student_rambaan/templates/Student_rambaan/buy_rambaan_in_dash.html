@@ -1,0 +1,9 @@
+{% extends "dashboard.html" %}
+
+{% block content %}
+<h1 class="text-center fw-bold mb-0">Rambaan</h1>
+<p class="mx-auto text-center"
+  style="height: 2.3px; width: 35vw; max-width: 170px; background-color: black; transform: translateX(0%);"></p>
+you have not rambaan , have to buy <br>
+click here to buy --- <a href="{{ url_for('Student_rambaan.proced_to_buy') }}">Buy</a>
+{% endblock %}
