@@ -9,7 +9,7 @@ from secrets import token_hex
 
 
 
-from phonepe.sdk.pg.payments.payment_client import PhonePePaymentClient  
+from phonepe.sdk.pg.payments.v1.payment_client import PhonePePaymentClient  
 from phonepe.sdk.pg.env import Env
 
 app = Flask(__name__)
