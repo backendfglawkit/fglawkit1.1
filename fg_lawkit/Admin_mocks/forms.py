@@ -34,7 +34,7 @@ class subject(FlaskForm):
         paper_code= StringField('Paper Unique Number', validators=[DataRequired(),validators.Regexp(r'^\S+$', message="Field must not contain whitespace")])
         paper_name=StringField("enter Text to display", validators=[DataRequired()])
         paper_time_duration=TimeField('Time Duration',validators=[DataRequired()])
-        Question = FieldList(FormField(addMocks), min_entries=5, max_entries=8)
+        Question = FieldList(FormField(addMocks), min_entries=150, max_entries=151)
 
 
 class AddImage(FlaskForm):
