@@ -6,7 +6,8 @@ from datetime import datetime, timedelta
 from fg_lawkit.Student_mocks.forms import  Confirmi
 from bson import ObjectId
 import uuid  
-from phonepe.sdk.pg.payments.models.request_v1.pg_pay_request import PgPayRequest  
+
+from phonepe.sdk.pg.payments.v1.models.request.pg_pay_request import PgPayRequest
 from flask_mail import Mail, Message
 from fg_lawkit import app, db
 mail = Mail(app)
