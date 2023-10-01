@@ -1,56 +1,6 @@
 {% extends 'base.html' %}
 
-{% block content %}{#
-<!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex align-items-start ">
-
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6 pt-0 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center ">
-          <h1 style ="color:#000; " >{{details['rambaan_categories_name']}}</h1>
-          <br>
-          <p style='font-size:13px; '>{{details['long_dic']}}</p>
-          
-         <div class="mt-3">
-            <a href="{{url_for('rambaan_home')}}" class="btn-get-started scrollto">Explore</a>
-            <a href="" class="btn-get-quote">Register</a>
-          </div>
-        </div>
-        <div class="col-lg-6 order-1 order-lg-2 hero-img ps-lg-2 align-item-center d-flex justify-content-center"  >
-
-          <div class="card my-sm-5" style="width: 70%; ">
-            <img src="{{details['image_link']}}" class="card-img-top" style="height: 211px;" loading="eager" alt="Card Image" >
-              {#<div class="ratio ratio-16x9">
-                <iframe src="{{details['image_link']}}"></iframe>
-              </div>#}
-          
-
-            <div class="card-body">
-                <div>
-                    <center><h2 style="padding: 5px;"><strong>{{details['rambaan_categories_name']}}</strong></h2>
-                    <hr>
-                    <p>  {{details['short_dic']}}</p></center>
-                    <div class="ps-3 pt-2">
-                      <ul>
-                        {% for j in details['feature'] %}
-                        <li><i class="bi bi-award"></i>{{j}}</li>
-                        {% endfor %}
-                      </ul>
-                </div>
-                </div>
-            </div>
-            <div class="card-footer" style="background:#00B2FF;">
-              <a href="{{ url_for('Student_rambaan.proced_to_buy') }}">
-                <h4 style="text-align: center;font-weight: bold;color: rgb(255,255,255);">Buy Now</h4>
-              </a>
-            </div>
-        </div>
-        
-        </div>
-      </div>
-    </div>
-
-  </section><!-- End Hero -->#}
+{% block content %}
 
 
 <br>
@@ -74,12 +24,12 @@
         <!-- Card on the other side -->
         <div class="col-lg-6 col-12 hero-card px-auto bg-white">
             <div class="card mx-auto" style="width: 70%;">
-                <div class="ratio ratio-16x9">
-                  <iframe src="{{details['image_link']}}"></iframe>
+                <div>
+                  <img class="img-fluid" src="{{details['image_link']}}">
                 </div>
                 <div class="card-body">
                   <div>
-                    <p class="card-text">he card's content.Some quick example text to build on the card's content.Some quick example text to build on the card's content.Some quick example text to build on the card's content.</p>
+                    <p class="card-text">{{details['short_dic']}}</p>
                   </div>
                   <div >
                     <ul class="hero-list">
