@@ -24,8 +24,10 @@
         <!-- Card on the other side -->
         <div class="col-lg-6 col-12 hero-card px-auto bg-white">
             <div class="card mx-auto" style="width: 60%;">
-                
-                  <img class="img-fluid" src="{{details['image_link']}}">
+                  <div style="position:relative;padding-top:56.25%;">
+                    <iframe src="{{details['video_link']}}" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+                </div>
+                  {#<img class="img-fluid" src="{{details['image_link']}}">#}
                
                 <div class="card-body">
                   <div>
