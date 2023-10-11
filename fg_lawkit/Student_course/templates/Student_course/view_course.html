@@ -2,10 +2,11 @@
 
 {% block content %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>Index and Links</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         /* Disable text selection */
         body,
@@ -30,86 +31,48 @@
 <body>
 
 
-
     <div class="d-flex flex-column" id="content-wrapper" style="margin-right: 10px;margin-left: 10px;">
         <div class="container py-4 py-xl-1">
-            <div class="row d-lg-flex justify-content-lg-center mb-3">
-
+            <div class="row d-lg-flex justify-content-lg-center mb-3" id="left-side">
 
                 <div class="col-lg-6 col-xl-7">
-
                     <div class="row">
                         <div class="col">
                             <div class="card">
                                 <div class="card-header">
-                                    <h6 class="text-primary fw-bold m-0" style="font-size: 31px;" id="bablu">fdsgfdhg</h6>
+                                    <h6 class="text-primary fw-bold m-0" style="font-size: 31px;" id="content-heading">
+                                        Content Title</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="ratio ratio-4x3">
-                                        <iframe id="content-iframe" width="100%" height="600px"></iframe>
+                                    <div class="ratio ratio-4x3" id="content-display">
+                                        <video id="video" controls>
+                                            <source src="" type="video/mp4">
+                                        </video>
+                                        <iframe id="reso" width="100%" height="600px" src="" frameborder="0"></iframe>
                                     </div>
                                 </div>
+                                <div class="card-footer">
+                                    <p id="content-description">Content Description</p>
+                                </div>
                             </div>
-
-                            
                         </div>
                     </div>
 
                     <div class="row mt-4">
-
                         <div class="text-center">
-                            <button id="fullscreen-button" class="btn btn-primary" style="display: none;">Toggle
+                            <button id="fullscreen-btn" class="btn btn-primary" style="display: none;">Toggle
                                 Fullscreen</button>
                         </div>
                     </div>
-
                 </div>
-
-
                 <div class="col-lg-6 col-xl-5 col-xxl-4 offset-lg-0">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="text-primary fw-bold m-0" style="font-size: 31px;">Course Content</h6>
+                            <h6 class="text-primary fw-bold m-0" style="font-size: 20px;">Course Content</h6>
                         </div>
                         <div class="card-body">
-
-                            <div class="accordion">
-                                {% for module, chapters in data.items() %}
-                                <div class="accordion-item">
-                                    <h2 class="accordion-header">
-                                        <button class="accordion-button" type="button" data-toggle="collapse"
-                                            data-target="#collapse{{ loop.index }}" aria-expanded="false"
-                                            aria-controls="collapse{{ loop.index }}">
-                                            <strong>{{ module }}</strong>
-                                        </button>
-                                    </h2>
-                                    <div id="collapse{{ loop.index }}" class="accordion-collapse collapse"
-                                        aria-labelledby="heading{{ loop.index }}">
-                                        <div class="accordion-body">
-                                            <ul class="list-group">
-                                                {% for chapter in chapters %}
-                                                <li
-                                                    class="list-group-item d-flex justify-content-between align-items-center border-0">
-                                                    <a href="#"  style="text-decoration:none"
-                                                        data-link="{{ chapter.link }}" data-type="{{ chapter.type }}">
-                                                        {{chapter.title }}
-                                                    </a>
-                                                    {% if chapter.type == "reso" %}
-                                                    <span style="color: #6b6b6b;">
-                                                        <i class="fas fa-file"></i>
-                                                    </span>
-
-                                                    {% else %}
-                                                    <span><i class="fas fa-video" style="color: #787878;"></i></span>
-                                                    {% endif %}
-                                                </li>
-                                                <hr class="m-0">
-                                                {% endfor %}
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                {% endfor %}
+                            <div class="list-group" id="module-list">
+                                <!-- Populate this list with module names and titles using Jinja2 -->
                             </div>
                         </div>
                     </div>
@@ -117,85 +80,83 @@
             </div>
         </div>
     </div>
-
-
-
+    </div>
 
     <script>
-        // JavaScript to handle link clicks
-        const links = document.querySelectorAll('a[data-link]');
-        const iframe = document.getElementById('content-iframe');
-        const fullscreenButton = document.getElementById('fullscreen-button');
+        // JavaScript code to handle interactions
+        const data = JSON.parse('{{ data | tojson | safe }}');
+        const moduleList = document.getElementById('module-list');
+        const contentHeading = document.getElementById('content-heading');
+        const contentDisplay = document.getElementById('content-display');
+        const video = document.getElementById('video');
+        const reso = document.getElementById('reso');
+        const contentDescription = document.getElementById('content-description');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
 
-        // Function to open the link in the iframe
-        function openLink(event) {
-            event.preventDefault();
-            const link = event.target.getAttribute('data-link');
-            const type = event.target.getAttribute('data-type');
-            if (type === 'video') {
-                // If it's a video link, replace the iframe with the video
-                iframe.src = link;
-                // Hide the fullscreen button for videos
-                fullscreenButton.style.display = 'none';
-            } else {
-                // If it's a text doc, open it in the iframe
-                iframe.src = link;
-                // Show the fullscreen button for text docs
-                fullscreenButton.style.display = 'block';
-            }
-        }
+        // Function to display content based on the selected module and title
+        function displayContent(moduleName, title) {
+            const module = data[moduleName];
+            if (module) {
+                const content = module.find(item => item.title === title);
+                if (content) {
+                    contentHeading.textContent = content.title;
+                    contentDescription.textContent = content.description;
 
-        // Function to toggle fullscreen for the iframe
-        function toggleFullscreen() {
-            if (!document.fullscreenElement) {
-                iframe.requestFullscreen();
-            } else {
-                document.exitFullscreen();
-            }
-        }
-
-        // Add click event listeners to all links
-        links.forEach(link => {
-            link.addEventListener('click', openLink);
-        });
-
-        // Add event listener to the fullscreen button
-        fullscreenButton.addEventListener('click', toggleFullscreen);
-
-        // Load the first link automatically
-        if (links.length > 0) {
-            links[0].click();
-        }
-
-        // Detect fullscreen change and resize the iframe
-        document.addEventListener('fullscreenchange', function () {
-            if (document.fullscreenElement) {
-                iframe.style.width = '100%';
-                iframe.style.height = '100%';
-            } else {
-                iframe.style.width = '100%';
-                iframe.style.height = '600px';
-            }
-        });
-        // Add event listeners to the accordion buttons
-        const accordionButtons = document.querySelectorAll('.accordion-button');
-
-        accordionButtons.forEach((button, index) => {
-            button.addEventListener('click', () => {
-                const collapseId = `collapse${index + 1}`;
-                const collapse = document.getElementById(collapseId);
-
-                // Toggle the collapse state manually
-                if (collapse.classList.contains('show')) {
-                    collapse.classList.remove('show');
-                } else {
-                    collapse.classList.add('show');
+                    if (content.type === 'video') {
+                        video.style.display = 'block';
+                        reso.style.display = 'none';
+                        video.src = content.link;
+                        fullscreenBtn.style.display = 'none';
+                    } else if (content.type === 'reso') {
+                        video.style.display = 'none';
+                        reso.style.display = 'block';
+                        reso.src = content.link;
+                        fullscreenBtn.style.display = 'block';
+                    }
                 }
-            });
+            }
+        }
+        // Replace the existing code for populating the module list
+        // with this updated code
+
+        for (const moduleName in data) {
+            if (data.hasOwnProperty(moduleName)) {
+                const module = data[moduleName];
+
+                // Create a list header item for the module name
+                const moduleHeader = document.createElement('a');
+                moduleHeader.classList.add('list-group-item', 'list-group-item-action', 'list-group-item-primary', 'fw-bold');
+                moduleHeader.innerHTML = moduleName;
+                moduleList.appendChild(moduleHeader);
+
+                for (const content of module) {
+                    // Create a list item for each content title
+                    const titleItem = document.createElement('a');
+                    titleItem.classList.add('list-group-item', 'list-group-item-action');
+                    titleItem.textContent = content.title;
+                    titleItem.addEventListener('click', () => {
+                        displayContent(moduleName, content.title);
+                    });
+                    moduleList.appendChild(titleItem);
+                }
+
+                if (module[0]) {
+                    displayContent(moduleName, module[0].title);
+                }
+            }
+        }
+
+
+        // Add event listener for fullscreen button
+        fullscreenBtn.addEventListener('click', () => {
+            if (reso.style.display === 'block') {
+                reso.requestFullscreen();
+            }
         });
-        
     </script>
 </body>
 
 </html>
+
+
 {% endblock %}
