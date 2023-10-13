@@ -7,20 +7,20 @@ from fg_lawkit import bcrypt, app, db
 Reset_password_blueprint = Blueprint('Reset_password', __name__, template_folder='templates/Reset_password')
 
 # Config for mailtrap
-app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
-app.config['MAIL_PORT'] = 2525
-app.config['MAIL_USERNAME'] = 'f5b914af0f406d'
-app.config['MAIL_PASSWORD'] = '4f4480ada7449f'
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
-
-# # MAIL LIVE SETUP
-# app.config['MAIL_SERVER']='live.smtp.mailtrap.io'
-# app.config['MAIL_PORT'] = 587
-# app.config['MAIL_USERNAME'] = 'api'
-# app.config['MAIL_PASSWORD'] = '05adaf8142db81493dca2507725714b9'
+# app.config['MAIL_SERVER'] = 'sandbox.smtp.mailtrap.io'
+# app.config['MAIL_PORT'] = 2525
+# app.config['MAIL_USERNAME'] = 'f5b914af0f406d'
+# app.config['MAIL_PASSWORD'] = '4f4480ada7449f'
 # app.config['MAIL_USE_TLS'] = True
 # app.config['MAIL_USE_SSL'] = False
+
+# # MAIL LIVE SETUP
+app.config['MAIL_SERVER']='live.smtp.mailtrap.io'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'api'
+app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
 
 mail = Mail(app)
 
