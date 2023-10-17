@@ -2,17 +2,16 @@ from flask import Blueprint,render_template,abort,Flask, request, redirect, url_
 from flask_login import login_required, current_user
 from fg_lawkit import db
 from flask_mail import Mail, Message
-from fg_lawkit import app
 
 Admin_dashboard_blueprint = Blueprint('Admin_dashboard', __name__, template_folder='templates/Admin_dashboard')
 
 #for testing only
-app.config['MAIL_SERVER']='live.smtp.mailtrap.io'
-app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'api'
-app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
+Admin_dashboard_blueprint.config['MAIL_SERVER']='live.smtp.mailtrap.io'
+Admin_dashboard_blueprint.config['MAIL_PORT'] = 587
+Admin_dashboard_blueprint.config['MAIL_USERNAME'] = 'api'
+Admin_dashboard_blueprint.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
+Admin_dashboard_blueprint.config['MAIL_USE_TLS'] = True
+Admin_dashboard_blueprint.config['MAIL_USE_SSL'] = False
 
 ## checking ###
 @Admin_dashboard_blueprint.before_request
