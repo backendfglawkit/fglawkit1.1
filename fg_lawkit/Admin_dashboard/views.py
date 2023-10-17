@@ -2,6 +2,7 @@ from flask import Blueprint,render_template,abort,Flask, request, redirect, url_
 from flask_login import login_required, current_user
 from fg_lawkit import db
 from flask_mail import Mail, Message
+from fg_lawkit import app
 
 Admin_dashboard_blueprint = Blueprint('Admin_dashboard', __name__, template_folder='templates/Admin_dashboard')
 
