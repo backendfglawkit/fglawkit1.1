@@ -381,6 +381,7 @@ h6 {
   font-size: 14px;
   background: #DBF4FF;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 #footer .footer-top {
@@ -389,7 +390,7 @@ h6 {
 }
 
 #footer .footer-top .footer-contact {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
 }
 
 #footer .footer-top .footer-contact h3 {
@@ -399,6 +400,7 @@ h6 {
   line-height: 1;
   font-weight: 700;
   color: #00B2FF;
+  text-align: left;
 }
 
 #footer .footer-top .footer-contact p {
@@ -407,6 +409,7 @@ h6 {
   margin-bottom: 0;
   font-family: "Raleway", sans-serif;
   color: #777777;
+  text-align: left;
 }
 
 #footer .footer-top h4 {
@@ -415,6 +418,7 @@ h6 {
   color: #031b26;
   position: relative;
   padding-bottom: 12px;
+  text-align: left;
 }
 
 #footer .footer-top .footer-links {
