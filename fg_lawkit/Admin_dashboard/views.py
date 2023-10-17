@@ -9,10 +9,10 @@ Admin_dashboard_blueprint = Blueprint('Admin_dashboard', __name__, template_fold
 #for testing only
 app.config['MAIL_SERVER']='live.smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'api'
+app.config['MAIL_USERNAME'] = 'backendfglawkit@gmail.com'
 app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
 app.config['MAIL_USE_TLS'] = True
-app`.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USE_SSL'] = False
 
 ## checking ###
 @Admin_dashboard_blueprint.before_request
@@ -36,7 +36,7 @@ def analytics():
 def send():
     message=Message(
         subject="hello",
-        recipients=['backendfglawkit@gmail.com'],
+        recipients=['2003jaindarshan@gmail.com'],
         sender='backendfglawkit@gmail.com'
         )
     message.body='hello yes'
