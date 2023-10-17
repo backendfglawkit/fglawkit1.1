@@ -2,6 +2,7 @@
 body {
   font-family: "Open Sans", sans-serif;
   color: #000000;
+  user-select: none;
 }
 
 a {
