@@ -3,6 +3,7 @@ from flask_login import login_required, current_user
 from fg_lawkit import db
 from flask_mail import Mail, Message
 from fg_lawkit import app
+import mailtrap as mt
 
 Admin_dashboard_blueprint = Blueprint('Admin_dashboard', __name__, template_folder='templates/Admin_dashboard')
 
@@ -36,9 +37,16 @@ def analytics():
 
 @Admin_dashboard_blueprint.route('/send')
 def send():
-    msg = Message('Hello from the other side!', sender =   'mailtrap@fglawkit.com', recipients = ['backendfglawkit@gmail.com'])
-    msg.body = "<h1>Hey Paul,</h1> <br> <p>sending you this email from my Flask app, lmk if it works</p>"
-    mail.send(msg)
+    mail = mt.Mail(
+    sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+    to=[mt.Address(email="2003jaindarshan@gmail.com")],
+    subject="Reset Password",
+    text="Your Otp is 325698 ,Dont share it to anyone ! this is sample testing ",
+    category="Forgot Password",
+)
+
+    client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+    client.send(mail)
     return "Message sent!"
 
 
