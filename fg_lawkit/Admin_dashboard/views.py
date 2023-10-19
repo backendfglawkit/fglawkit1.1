@@ -39,7 +39,7 @@ def send():
     msg = Message(
         subject= 'Welcome To FG lawKit',
         recipients = ['21f1000419@ds.study.iitm.ac.in'],
-        sender = ('FG Lawkit','mailtrap@fglawkit.com'),
+        sender = 'mailtrap@fglawkit.com',
     )
     msg.html = "<h4>Thanks For Registering in FG lawKit<h4><br><p> Please Wait for further Instruction!!</p>"
     mail.send(msg)
