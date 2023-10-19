@@ -38,7 +38,7 @@ def analytics():
 def send():
     msg = Message(
         subject= 'Welcome To FG lawKit',
-        recipients = ['2003jaindarshan@gmail.com'])
+        recipients = ['2003jaindarshan@gmail.com']),
         sender = ('FG Lawkit','mailtrap@fglawkit.com')
     msg.html = "<h4>Thanks For Registering in FG lawKit<h4><br><p> Please Wait for further Instruction!!</p>"
     mail.send(msg)
