@@ -41,7 +41,7 @@ def send():
         recipients = ['backendfglawkit@gmail.com'],
         sender = 'mailtrap@fglawkit.com',
     )
-    msg.html = "<h4>Thanks For Registering in FG lawKit<h4><br><p> Please Wait for further Instruction!!</p>"
+    msg.body = "Thanks For Registering in FG lawKit Please Wait for further Instruction!!"
     mail.send(msg)
     return "Message sent!"
 
