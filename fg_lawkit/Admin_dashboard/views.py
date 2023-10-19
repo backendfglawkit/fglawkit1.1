@@ -36,7 +36,7 @@ def analytics():
 def send():
     message=Message(
         subject="hello",
-        recipients=['2003jaindarshan@gmail.com'],
+        recipients='2003jaindarshan@gmail.com',
         sender='backendfglawkit@gmail.com'
         )
     message.body='hello yes'
