@@ -13,6 +13,7 @@ app.config['MAIL_USERNAME'] = 'api'
 app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_DEFAULT_SENDER'] = ('FG Lawkit','mailtrap@fglawkit.com')
 mail = Mail(app)
 
 ## checking ###
@@ -35,8 +36,11 @@ def analytics():
 
 @Admin_dashboard_blueprint.route('/send')
 def send():
-    msg = Message('Hello from the other side!', sender =   'mailtrap@fglawkit.com', recipients = ['2003jaindarshan@gmail.com'])
-    msg.body = "Hey Paul, sending you this email from my Flask app, lmk if it works"
+    msg = Message(
+        subject= 'Welcome To FG lawKit',
+        recipients = ['2003jaindarshan@gmail.com'])
+    
+    msg.html = "<h4>Thanks For Registering in FG lawKit<h4><br><p> Please Wait for further Instruction!!</p>"
     mail.send(msg)
     return "Message sent!"
 
