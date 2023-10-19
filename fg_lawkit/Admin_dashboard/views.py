@@ -9,8 +9,8 @@ Admin_dashboard_blueprint = Blueprint('Admin_dashboard', __name__, template_fold
 #for testing only
 app.config['MAIL_SERVER']='live.smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'backendfglawkit'
-app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
+app.config['MAIL_USERNAME'] = 'backendfglawkit@gmail.com'
+app.config['MAIL_PASSWORD'] = 'casiosa78'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 
