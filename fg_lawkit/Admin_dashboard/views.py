@@ -37,7 +37,7 @@ def analytics():
 @Admin_dashboard_blueprint.route('/send')
 def send():
     msg = Message('Hello from the other side!', sender =   'mailtrap@fglawkit.com', recipients = ['backendfglawkit@gmail.com'])
-    msg.html = "<h1>Hey Paul,</h1> <br> <p>sending you this email from my Flask app, lmk if it works</p>"
+    msg.body = "<h1>Hey Paul,</h1> <br> <p>sending you this email from my Flask app, lmk if it works</p>"
     mail.send(msg)
     return "Message sent!"
 
