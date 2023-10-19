@@ -13,6 +13,7 @@ app.config['MAIL_USERNAME'] = 'api'
 app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
+mail = Mail(app)
 
 ## checking ###
 @Admin_dashboard_blueprint.before_request
