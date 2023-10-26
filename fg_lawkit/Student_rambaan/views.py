@@ -2,8 +2,7 @@
 from flask import Blueprint,render_template,redirect,url_for,request,session,flash
 from flask_login import logout_user, login_required, current_user
 from fg_lawkit import db,phonepe_client
-from fg_lawkit.Student_rambaan.modles import check_active_rambaan,move_expired_mock,perform_fuzzy_search,check_have_rambaan
-
+from fg_lawkit.Student_rambaan.modles import check_active_rambaan,move_expired_mock,perform_fuzzy_search,check_have_rambaan,generate_custom_uuid
 from datetime import datetime, timedelta
 from fg_lawkit.Student_rambaan.forms import Search
 from bson import ObjectId
@@ -116,7 +115,7 @@ def play_single_rambaan_video(value):
 def proced_to_buy():
       
         if not check_have_rambaan(db,email):
-            merchant_transaction_id = str(uuid.uuid4())
+            merchant_transaction_id = generate_custom_uuid(30)
             session['pay_id']= merchant_transaction_id
             
             
