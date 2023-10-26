@@ -36,3 +36,11 @@ def is_expire_course(db,email):
     course_purchases = document.get("Course_purchases", [])
     valid_course_purchases = [purchase for purchase in course_purchases if datetime.strptime(purchase["exp_date"], "%Y-%m-%d") > current_date]
     collection.update_one({"email": email}, {"$set": {"Course_purchases": valid_course_purchases}})
+
+import random
+import string
+
+def generate_custom_uuid(length):
+    characters = string.ascii_letters + string.digits
+    custom_uuid = ''.join(random.choice(characters) for _ in range(length))
+    return custom_uuid
