@@ -1,7 +1,7 @@
 from flask import Blueprint,render_template,redirect,url_for,request,session,flash,abort
 from flask_login import logout_user, login_required, current_user
 from fg_lawkit.Student_rambaan.modles import check_active_rambaan,move_expired_mock
-from fg_lawkit.Student_course.modles import check_read,check_get_content,check_have_course,is_expire_course
+from fg_lawkit.Student_course.modles import check_read,check_get_content,check_have_course,is_expire_course,generate_custom_uuid
 from datetime import datetime, timedelta
 from bson import ObjectId
 from fg_lawkit import db,phonepe_client
@@ -71,7 +71,7 @@ def course_view(value):
 def buy_course(value):
     if check_have_course(db,email,value):
         ## function to make payment
-        merchant_transaction_id = str(uuid.uuid4())
+        merchant_transaction_id = generate_custom_uuid(30)
         session['pay_id']= merchant_transaction_id
         session['Course_purchases']=value
         course_details=db.course_home.find_one({'course_code':value})
