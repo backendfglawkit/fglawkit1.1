@@ -30,7 +30,13 @@ def move_expired_mock(db,user_id):
                 '$set': {'mock_purchased': user['mock_purchased']}
             })
 
+import random
+import string
 
+def generate_custom_uuid(length):
+    characters = string.ascii_letters + string.digits
+    custom_uuid = ''.join(random.choice(characters) for _ in range(length))
+    return custom_uuid
 
 from fuzzywuzzy import fuzz
 def perform_fuzzy_search(query,db):
