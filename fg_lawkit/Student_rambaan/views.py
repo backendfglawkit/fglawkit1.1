@@ -129,7 +129,7 @@ def proced_to_buy():
             
             
             pay_page_request = PgPayRequest.pay_page_pay_request_builder(merchant_transaction_id=merchant_transaction_id,  
-                                                                amount=300,  
+                                                                amount=300*100,  
                                                                 merchant_user_id=email,  
                                                                 callback_url=url_for('Student_rambaan.rambaan'),  
                                                                 redirect_url="https://www.fglawkit.com/Student_rambaan//rambaan/buy/confirm"
