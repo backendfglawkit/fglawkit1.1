@@ -12,6 +12,15 @@ from phonepe.sdk.pg.payments.v1.models.request.pg_pay_request import PgPayReques
 from flask_mail import Mail, Message
 from fg_lawkit import  app, db
 
+
+# Config for mailtrap
+app.config['MAIL_SERVER']='live.smtp.mailtrap.io'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USERNAME'] = 'api'
+app.config['MAIL_PASSWORD'] = 'fb600527ba148033335e46c408ba6971'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+
 mail = Mail(app)
 
 
@@ -115,12 +124,12 @@ def play_single_rambaan_video(value):
 def proced_to_buy():
       
         if not check_have_rambaan(db,email):
-            merchant_transaction_id = generate_custom_uuid(30)
+            merchant_transaction_id = str(uuid.uuid4())[:-2]
             session['pay_id']= merchant_transaction_id
             
             
             pay_page_request = PgPayRequest.pay_page_pay_request_builder(merchant_transaction_id=merchant_transaction_id,  
-                                                                amount=300*100,  
+                                                                amount=300,  
                                                                 merchant_user_id=email,  
                                                                 callback_url=url_for('Student_rambaan.rambaan'),  
                                                                 redirect_url="https://www.fglawkit.com/Student_rambaan//rambaan/buy/confirm"
@@ -131,6 +140,7 @@ def proced_to_buy():
             
             return redirect(pay_page_url)
         return redirect (url_for('Student_rambaan.rambaan'))
+import mailtrap as mt
 
 @Student_rambaan_blueprint.route('/rambaan/buy/confirm')
 def confirm_buy():
@@ -143,21 +153,55 @@ def confirm_buy():
         
        
         if  flag== True and  code == 'PAYMENT_SUCCESS' :
-            exp_day = str((datetime.now() + timedelta(days=45)).strftime('%Y-%m-%d'))
+            exp_day = str((datetime.now() + timedelta(days=60)).strftime('%Y-%m-%d'))
             update_result = db.users.update_one({"email": email},{"$set": {"rambaan": {'status':True,'exp_date':exp_day}}})
             session.pop('pay_id')
             msg_body = f"Payment Successful, Your Purchase Rambaan. Your Transaction Id - {merchant_transaction_id}. Purchase by an Id {email}. Purchase Date will Be {datetime.now().strftime('%Y-%m-%d')} and expires no. {exp_day} if any issue you can mail us at fglawkit@gmail.com."
-            msg = Message('PAYMENT_SUCCESS', sender='backendfglawkit@gmail.com ', recipients=[email])
-            msg.body = msg_body
-            mail.send(msg)
+
+            mail = mt.Mail(
+                        sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+                        to=[mt.Address(email=email)],
+                        subject="Thanks For Purchasing Rambaan",
+                        text=str(msg_body),
+                        category="RamBaan Purchase",
+                )
+            client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+            client.send(mail)
+
+            mail = mt.Mail(
+                        sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+                        to=[mt.Address(email='parth@fglawkit.com')],
+                        subject="rambaan purchase(2)",
+                        text=str(msg_body),
+                        category="RamBaan Purchase",
+                )
+            client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+            client.send(mail)
+            
             
             return redirect (url_for('Student_rambaan.rambaan'))
         elif flag== True and  code == 'PAYMENT_PENDING':
-            msg = Message('PAYMENT_PENDING', sender='backendfglawkit@gmail.com ', recipients=[email])
             msg_body = f"Payment Pending. Your Transaction Id - {merchant_transaction_id}. Purchase by an Id {email}. Purchase Date will Be {datetime.now().strftime('%Y-%m-%d')}. Your issue is solving as soon as possible. Feel free to mail us at fglawkit@gmail.com."
-            msg.body = msg_body
+            mail = mt.Mail(
+                        sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+                        to=[mt.Address(email=email)],
+                        subject="Payment Pendind, Contact Us",
+                        text=str(msg_body),
+                        category="Payment Pendind",
+                )
+            client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+            client.send(mail)
 
-            mail.send(msg)
+            mail = mt.Mail(
+                        sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+                        to=[mt.Address(email='parth@fglawkit.com')],
+                        subject="Payment Pendind",
+                        text=str(msg_body),
+                        category="Payment Pendind(2)",
+                )
+            client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+            client.send(mail)
+            
             db.money_dispute.insert_one({'email':email,'dispute':[code,merchant_transaction_id,'rambaan','Fg_rambaan'],'date':str(datetime.now())})
             db.users.update_one({'email':email},{'$push':{'dispute':[code,merchant_transaction_id,'rambaan','Fg_rambaan']}})
             if session.get('pay_id'):
@@ -165,12 +209,27 @@ def confirm_buy():
             return redirect (url_for('Student_rambaan.rambaan'))
         else:
             session.pop('pay_id')
-            message="Fail" # have to return
-            msg = Message('Password Fail', sender='backendfglawkit@gmail.com ', recipients=[email])
-            # msg.body = "PAYMENT Fail. Your Transication Id - ",merchant_transaction_id, "Purchase by an Id",email,". Purchase Date will Be",(datetime.now().strftime('%Y-%m-%d')), "Payment Fail"
+
             msg_body = f"PAYMENT Fail. Your Transaction Id - {merchant_transaction_id}. Purchase by an Id {email}. Purchase Date will Be {datetime.now().strftime('%Y-%m-%d')}. Payment Fail"
-            msg.body=msg_body
-            mail.send(msg)
+            mail = mt.Mail(
+                        sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+                        to=[mt.Address(email=email)],
+                        subject="Reset Password",
+                        text=str(msg_body),
+                        category="RamBaan Purchase",
+                )
+            client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+            client.send(mail)
+
+            mail = mt.Mail(
+                        sender=mt.Address(email="mailtrap@fglawkit.com", name="FG LawKit"),
+                        to=[mt.Address(email='parth@fglawkit.com')],
+                        subject="Reset Password",
+                        text=str(msg_body),
+                        category="RamBaan Purchase",
+                )
+            client = mt.MailtrapClient(token="fb600527ba148033335e46c408ba6971")
+            client.send(mail)
             return redirect (url_for('Student_rambaan.rambaan'))
     return redirect (url_for('Student_rambaan.rambaan'))
         
