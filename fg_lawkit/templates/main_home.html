@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{#{% extends 'base.html' %}
 
 {% block content %}
 <style>
@@ -251,3 +251,185 @@
     </div>
 </div>
 {% endblock %}
+#}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ComingSoon - Bootstrap Coming Soon Template</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="icon">
+  
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+  body {
+    font-family: "Open Sans", sans-serif;
+    color: #fff;
+    background: url("../img/bg.jpg") top center no-repeat;
+    background-size: cover;
+    position: relative;
+  }
+  
+  body::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(34, 34, 34, 0.8);
+  }
+  
+  @media (min-width: 1366px) {
+    body {
+      background-attachment: fixed;
+    }
+  }
+  
+  a {
+    color: #ff0000;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    color: #ff3333;
+    text-decoration: none;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Raleway", sans-serif;
+  }
+  
+  #main {
+    position: relative;
+  }
+  
+  
+  /*--------------------------------------------------------------
+  # Header
+  --------------------------------------------------------------*/
+  #header {
+    position: relative;
+    width: 100%;
+    padding: 100px 0;
+    /* countdown */
+  }
+  
+  #header h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: #fff;
+  }
+  
+  #header h2 {
+    color: #eee;
+    margin-bottom: 40px;
+    font-size: 22px;
+  }
+  
+  
+  
+  @keyframes animate-loading-notify {
+    0% {
+      transform: rotate(0deg);
+    }
+  
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  #header .social-links {
+    margin-top: 10px;
+  }
+  
+  #header .social-links a {
+    font-size: 24px;
+    display: inline-block;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1;
+    padding-top: 14px;
+    margin: 0 10px;
+    text-align: center;
+    transition: 0.3s;
+  }
+  
+  #header .social-links a:hover {
+    color: #fff;
+  }
+  
+  
+  /*--------------------------------------------------------------
+  # Footer
+  --------------------------------------------------------------*/
+  #footer {
+    background: rgba(19, 19, 19, 0.4);
+    padding: 30px 0;
+    color: #fff;
+    font-size: 14px;
+    position: relative;
+  }
+  
+  #footer .copyright {
+    text-align: center;
+  }
+</style>
+</head>
+
+<body class="bg-dark">
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center">
+    <div class="container d-flex flex-column align-items-center">
+
+      <h1>ComingSoon</h1>
+      <h2>We are building something good for you , meanwhile for updates kindly visit our YouTube ' FG Lawkit'.</h2>
+
+      <div class="social-links text-center">
+        <a href="https://www.instagram.com/fg_lawkit/" class="instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a href="https://in.linkedin.com/company/fg-lawkit" class="linkedin"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.youtube.com/@fglawkit" class="Youtube"><i class="fa-brands fa-youtube"></i></a>
+      </div>
+
+    </div>
+  </header><!-- End #header -->
+
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>FG lawkit</span></strong>. All Rights Reserved
+      </div>
+    </div>
+  </footer><!-- End #footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
+
+</body>
+
+</html>
+    
