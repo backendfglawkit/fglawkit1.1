@@ -1,1 +1,254 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+    .my-hover-card {
+        transition: all 500ms ease-in-out;
+    }
+
+    .my-hover-card:hover {
+        transform: translateY(-15px);
+        box-shadow: 0px 10px 100px -17px rgba(0, 0, 0, 0.1) !important;
+    }
+</style>
+<div  style="user-select: none;">
+
+<div>
+    <div style="padding-top:66px;"></div>
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            {# this is carosal for looping#}
+            <a href="https://www.youtube.com/@fglawkit">
+                <div class="carousel-item active position-relative" data-bs-interval="3000">
+                    <img src="https://fglawkit-images-cdn.b-cdn.net/banner/sample%20text%20(1).jpg"
+                        class="d-block w-100" alt="..." />
+                </div>
+            </a>
+            <a href="https://www.youtube.com/@fglawkit">
+                <div class="carousel-item position-relative" data-bs-interval="3000">
+
+                    <img src="https://fglawkit-images-cdn.b-cdn.net/banner/banner%201.jpg" class="d-block w-100"
+                        alt="..." />
+                </div>
+            </a>
+
+            <a href="https://www.youtube.com/@fglawkit">
+                <div class="carousel-item position-relative" data-bs-interval="3000">
+
+                    <img src="https://fglawkit-images-cdn.b-cdn.net/banner/sample%20text.jpg" class="d-block w-100"
+                        alt="..." />
+                </div>
+            </a>
+
+            {#end here ..........#}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<div class="pt-5" style="background-color: #EFFAFF;">
+    <h2 class="fw-bold text-center mb-5">WHY FG <span style="color: #00B2FF;">LAW</span>KIT ?</h2>
+
+    <div class="my-5 mx-auto d-flex flex-wrap justify-content-center" style="max-width: fit-content;">
+        <div class="card text-center border-none position-relative overflow-hidden shadow px-2 py-1 my-2 mx-2"
+            style="max-width: 350px; width: 350px;">
+            <div class="card-body">
+                <img class="" style="max-width: 90px; max-height: 90px;"
+                    src="https://i.pinimg.com/564x/27/57/ae/2757ae3931aadff5bdebd27ad762eec0.jpg" alt="">
+                <h6 class="fw-bold mt-1">Shine in Internships</h6>
+                <p class="text-secondary" style="font-size: 13px;">Level Up Your Internship Journey and Empower
+                    Yourself to Compete Head-to-Head with Your Peers</p>
+                <div class="position-absolute w-100 start-0 bottom-0" style="height: 10px; background-color: #92DBD2;">
+                </div>
+            </div>
+        </div>
+        <div class="card text-center border-none position-relative overflow-hidden shadow px-2 py-1 my-2 mx-2"
+            style="max-width: 350px; width: 350px;">
+            <div class="card-body">
+                <img class="" style="max-width: 90px; max-height: 90px;"
+                    src="https://i.pinimg.com/564x/29/a8/2f/29a82facd83159e4a9955723605988bc.jpg" alt="">
+                <h6 class="fw-bold mt-1">Removing Law School Barrier</h6>
+                <p class="text-secondary" style="font-size: 13px;">Don't let your school tag define you. FG Lawkit
+                    is here as your law school senior, mentoring you to be market ready</p>
+                <div class="position-absolute w-100 start-0 bottom-0" style="height: 10px; background-color: #FCAFB5;">
+                </div>
+            </div>
+        </div>
+        <div class="card text-center border-none position-relative overflow-hidden shadow px-2 py-1 my-2 mx-2"
+            style="max-width: 350px; width: 350px;">
+            <div class="card-body">
+                <img class="" style="max-width: 90px; max-height: 90px;"
+                    src="https://i.pinimg.com/564x/57/73/7d/57737df0f1f2c0d5950cf8f608e1a924.jpg" alt="">
+                <h6 class="fw-bold mt-1">Become Legal Freelancer</h6>
+                <p class="text-secondary" style="font-size: 13px;">Learn and Earn: Apply common sense and start
+                    earning after gaining valuable knowledge from our enriched video library.</p>
+                <div class="position-absolute w-100 start-0 bottom-0" style="height: 10px; background-color: #B69FFA;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 pt-5 position-relative"
+        style="background-color: #DBF4FF; max-width: 100%; border-top-right-radius: 100%; border-top-left-radius: 100%;">
+        <h2 class="p-2 px-5 fw-bold text-center mt-5">EXPLORE OUR <span style="color: #00B2FF;">FLAGSHIP</span> PRODUCT
+            !!</h2>
+        <div class="d-flex flex-wrap-reverse mt-5 p-auto justify-content-evenly pt-5">
+            <div class="text-center text-lg-start">
+                <h2 class="fw-bold"> Ram<span style="color: #00B2FF;">Baan</span> Drafting</h2>
+                <p class="fs-5">Now there is no need to buy separate certification courses. <br> Enough of academic
+                    content, its time to learn genuine practical work.</p>
+                <a href="{{ url_for('rambaan_home') }}" style="text-decoration: none;">
+                    <button class="btn mt-3 hero-getstarted">Explore</button>
+                </a>
+            </div>
+            <div class="bg-dark" style="min-width: 500px;">
+                <div style="position:relative;padding-top:56.25%;"><iframe
+                        src="https://iframe.mediadelivery.net/embed/159433/72ec5b4d-b6c9-4cca-aab5-11b0a03a1f50?autoplay=false&loop=false&muted=false&preload=false"
+                        loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;"
+                        allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;"
+                        allowfullscreen="true"></iframe></div>
+
+            </div>
+        </div>
+    </div>
+    <div class="position-relative" style="background-color: #DBF4FF; max-width: 100%;">
+        <div class="" style=" max-width: 100vw; overflow-x: hidden;"><img class="w-100 h-100" src="static/svg/wave.svg"
+                alt=""></div>
+        <div class="my-5">
+            <div class="mt-5 px-5 d-flex justify-content-between">
+                <h1 class="fw-bold mx-1 ms-3">What People Say <span style="color: #00B2FF;">About Us</span></h1>
+            </div>
+
+            <div style="overflow-x: hidden;">
+                <div class="d-flex justify-content-center gap-5 my-5 px-5" style="width: max-content;">
+                    <div class="flex-shrink-0 my-hover-card hover-shadow bg-white rounded shadow pt-4 px-2 overflow-hidden position-relative"
+                        style="max-width: 350px; max-height: fit-content; min-width: 350px; min-height: 210px; cursor: pointer;">
+                        <div class="d-flex">
+                            <div><img class="rounded-circle" style="height: 40px; width: 40px;"
+                                    src="https://i.pinimg.com/564x/41/4e/e1/414ee1553c4429a7ac10dd9c79ec63ee.jpg"
+                                    alt=""></div>
+                            <div class="ms-3">
+                                <h6 class="fw-bold">CS Deepanshi Gupta</h6>
+                                <p class="text-body-secondary" style="font-size: 12px;">Trainee at Aekom Legal.
+                                    Formerly Associated With IBBI,FICCI,Vaish Associate.</p>
+                            </div>
+                        </div>
+                        <hr style="margin-top: -10px;">
+                        <div>
+                            <p><i>"Boon for first generation law students"</i></p>
+                            <div class="position-absolute bottom-0 end-0 d-flex me-2">
+                                <div class="mx-2"><img style="height: 40px; width: 40px; object-fit: contain;"
+                                        src="https://i.pinimg.com/564x/a1/6f/80/a16f80322b45ae47da54487f07f474a7.jpg"
+                                        alt=""></div>
+                                <div class="mx-2"><img style="height: 40px; width: 40px; object-fit: contain;"
+                                        src="https://i.pinimg.com/564x/4b/5c/5b/4b5c5bcae0e3cf8d62c1c007dbe4133d.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex-shrink-0 my-hover-card hover-shadow bg-white rounded shadow pt-4 px-2 overflow-hidden position-relative"
+                        style="max-width: 350px; max-height: fit-content; min-width: 350px; min-height: 210px; cursor: pointer;">
+                        <div class="d-flex">
+                            <div><img class="rounded-circle" style="height: 40px; width: 40px;"
+                                    src="https://i.pinimg.com/564x/0b/5c/90/0b5c90d76413f4daf8d6bbe7fd2e58dc.jpg"
+                                    alt=""></div>
+                            <div class="ms-3">
+                                <h6 class="fw-bold">Kartik Sonkhiya</h6>
+                                <p class="text-body-secondary" style="font-size: 12px;">Senior Legal Manager at
+                                    YES Bank.</p>
+                            </div>
+                        </div>
+                        <hr style="margin-top: -10px;">
+                        <div>
+                            <p><i>"Wonderful Legal Ed-Tech Startup"</i></p>
+                            <div class="position-absolute bottom-0 end-0 d-flex me-2">
+                                <div class="mx-2"><img style="height: 40px; width: 40px; object-fit: contain;"
+                                        src="https://i.pinimg.com/736x/14/26/67/142667b40c8bac9de94fc5492b82ad85.jpg"
+                                        alt=""></div>
+                                <div class="mx-2"><img style="height: 40px; width: 40px; object-fit: contain;"
+                                        src="https://i.pinimg.com/564x/d8/aa/af/d8aaaff206421cb6cca86dabbf45bc93.jpg"
+                                        alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-5">
+            <div class="mt-5 px-5 d-flex justify-content-between">
+                <h1 class="fw-bold text-center ms-3">Watch Our <span style="color: #00B2FF;">Flagship Podcast</span>
+                </h1>
+            </div>
+
+            <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+                <div class="px-5 my-5 d-flex gap-5 justify-content-evenly" style="width: max-content;">
+                    <div class="my-hover-card p-3 shadow rounded bg-white"
+                        style="max-width: min-content; min-width: 280px; min-height: 300px; max-height: 400px;">
+                        <div class="overflow-hidden max-w-100"><img class="rounded"
+                                style="height: fit-content; max-height: 150px; object-fit: cover; overflow: hidden;"
+                                src="https://i.pinimg.com/originals/19/fe/de/19fedebf04b143d702e9e62846dd4539.png"
+                                alt=""></div>
+                        <h5 class="fw-bold mt-2">Tips to Secure LLM From Cambridge, Work Culture in Top Legal Firms
+                        </h5>
+                        <a class="btn text-white fw-bold text-center d-block mt-4"
+                            href="https://youtu.be/HVB0WtceiMg?si=roCMmyQFUSFzMvtT"
+                            style="background-color: #00B2FF;">Watch Now</a>
+                    </div>
+                    <div class="my-hover-card p-3 shadow rounded bg-white"
+                        style="max-width: min-content; min-width: 280px; min-height: 300px; max-height: 400px;">
+                        <div><img class="rounded"
+                                style="height: fit-content; max-height: 150px; object-fit: cover; overflow: hidden;"
+                                src="https://i.pinimg.com/750x/8d/69/74/8d69742311c5e02d6c36ed2f997a19a4.jpg" alt="">
+                        </div>
+                        <h5 class="fw-bold mt-2">Become Lawyer at United Nations (UN) || Human Rights Lawyer
+                        </h5>
+                        <a class="btn text-white fw-bold text-center d-block mt-4" href="https://youtu.be/auHjuYt9Yp0"
+                            style="background-color: #00B2FF;">Watch Now</a>
+                    </div>
+                    <div class="my-hover-card p-3 shadow rounded bg-white"
+                        style="max-width: min-content; min-width: 280px; min-height: 300px; max-height: 400px;">
+                        <div><img class="rounded"
+                                style="height: fit-content; max-height: 150px; object-fit: cover; overflow: hidden;"
+                                src="https://i.pinimg.com/750x/5a/f8/7c/5af87cce1c1d4421f844387c39dbef9d.jpg" alt="">
+                        </div>
+                        <h5 class="fw-bold mt-2">LLM From Stanford | Stanford Law School | LSAT |Master of Laws
+                        </h5>
+                        <a class="btn text-white fw-bold text-center d-block mt-4" href="https://youtu.be/w2BbnmBuIP4"
+                            style="background-color: #00B2FF;">Watch Now</a>
+                    </div>
+                    
+                    <div class="my-hover-card p-3 shadow rounded bg-white"
+                    style="max-width: min-content; min-width: 280px; min-height: 300px; max-height: 400px;">
+                    <div><img class="rounded"
+                            style="height: fit-content; max-height: 150px; object-fit: cover; overflow: hidden;"
+                            src="https://i.pinimg.com/750x/a2/8d/09/a28d0973b3203550f66bf38f887397d6.jpg" alt="">
+                    </div>
+                    <h5 class="fw-bold mt-2">Carrer & Payscale To Become Law Professor In India
+                    </h5>
+                    <a class="btn text-white fw-bold text-center d-block mt-4" href="https://youtu.be/URKRrTSlUyw"
+                        style="background-color: #00B2FF;">Watch Now</a>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 
